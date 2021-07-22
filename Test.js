@@ -58,8 +58,7 @@ let speed;
 let speedMin=0;
 let speedMax=5000;
 let speedStep=100;
-let visible= true;
-let gui;
+var gui;
  
 function setup(){
   
