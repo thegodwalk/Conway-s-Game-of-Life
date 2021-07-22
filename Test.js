@@ -64,8 +64,8 @@ var pensizeMax=1;
 var pensizeStep = 1;
 
 var speedMin=0;
-var speedMax=5000;
-var speedStep=100;
+var speedMax=1000;
+var speedStep=25;
 
 
 
