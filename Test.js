@@ -75,7 +75,7 @@ function setup(){
   
     createCanvas(windowWidth,windowHeight);
    gui = createGui('LifeNaaaaaah');
-  gui.addGlobals('percentchange', 'size', 'dis', 'pen', 'pensize', 'StartColor', 'EndColor');
+  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'pensize', 'StartColor', 'EndColor');
     background(bgColor);
 h = windowHeight;
 w = windowWidth;
