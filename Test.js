@@ -177,7 +177,7 @@ function keyPressed(){
       stroke(0);
       heatmap=0;
     }
-    createCanvas(1000,1000);
+    createCanvas(displayHeight,displayWidth);
     background(255);
     
     DrawSquare(Color,ftemp);
@@ -289,6 +289,3 @@ function DrawSquare(Cell,on){
   }
   return f;
       }
-      
- 
-  
