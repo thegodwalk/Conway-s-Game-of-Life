@@ -54,10 +54,10 @@ let pensize=1;
 let pensizeMin=0;
 let pensizeMax=1;
 let pensizeStep = 1;
-let speed;
-let speedMin=0;
-let speedMax=5000;
-let speedStep=100;
+var speed;
+var speedMin=0;
+var speedMax=5000;
+var speedStep=100;
 var gui;
  
 function setup(){
@@ -88,7 +88,7 @@ play=0;
   www=0;
   heatmap=0;
   gui = createGui('LifeNaaaaaah');
- gui.addGlobals('EndColor');
+  gui.addGlobals('speed');
 noLoop();
 
 }
