@@ -66,7 +66,7 @@ function setup(){
   
     createCanvas(windowWidth,windowHeight);
    gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'bigPen', 'StartColor', 'EndColor');
+  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'drawPen', 'StartColor', 'EndColor');
     background(bgColor);
 h = windowHeight;
 w = windowWidth;
@@ -119,7 +119,7 @@ function windowResized() {
 function draw(){
   
 if(mouseIsPressed==true){
-  if(bigPen==false){
+  if(drawPen==false){
     if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
     b =round((mouseY-(sepy+0.75*dis)*scay)/sep);
@@ -128,7 +128,7 @@ if(mouseIsPressed==true){
     store[r]=pen;
     }
   }
-   else if(bigPen==true){
+   else if(drawPen==true){
   
   if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
