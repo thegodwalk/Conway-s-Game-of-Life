@@ -89,7 +89,7 @@ play=0;
   heatmap=0;
   gui = createGui('LifeNaaaaaah');
  gui.addGlobals('EndColor');
-
+noLoop();
 
 }
 
