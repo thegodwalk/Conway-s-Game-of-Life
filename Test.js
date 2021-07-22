@@ -1,7 +1,6 @@
  let h;
  let w;
- let size;
- let dist;
+
  let sep;
  let numy;
  let numx;
@@ -23,29 +22,50 @@ let boom;
 let store;
 let play;
 let www;
-let speed;
+
 let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
 let heatmap;
-let bgc = 255;
+let size = 20;
+let sizeMax = 500;
+let sizeMin = 0;
+let sizeStep = 1;
+let dis = 5;
+let disMax = 40;
+let disMin = 0;
+let disStep = 0.5;
+let bgColor = [255,255,255];
 let Cell0R=0;
 let Cell0G=0;
 let Cell0B=0;
 let Cell1R=255;
 let Cell1G=173;
 let Cell1B=204;
+let StartColor=[Cell0R,Cell0G,Cell0B];
+let EndColor=[Cell1R,Cell1G,Cell1B];
 let percentchange=0.1;
+let percentchangeMax=1;
+let percentchangeMin=0;
+let percentchangeStep=0.05;
 let pen=1;
+let penMax=1;
+let penMin=0;
+let penStep=1;
 let pensize=1;
+let pensizeMin=0;
+let pensizeMax=1;
+let pensizeStep = 1;
+let speed;
+let speedMin=0;
+let speedMax=5000;
+let speedStep=100;
 
  
 function setup(){
   
     createCanvas(windowWidth,windowHeight);
-    background(bgc);
+    background(bgColor);
 h = windowHeight;
 w = windowWidth;
-size=20;
-dis=5;
 sep = size+dis;
 numy = floor(h/sep);
 numx = floor(w/sep);
@@ -66,9 +86,9 @@ for(let i = 0;i<num;i++){
 }
 play=0;
   www=0;
-  speed=500;
   heatmap=0;
-  
+  gui = createGui('Life?Naaaaaah');
+ gui.addGlobals('size', 'dis', 'StartColor', 'EndColor', 'speed', 'pen', 'pensize', 'bgColor');
 
 
 }
@@ -80,7 +100,7 @@ function refresh(){
 
   neighbours(f);
     
-    background(bgc);
+    background(bgColor);
 
     DrawSquare(xy,f);
   
@@ -121,7 +141,7 @@ if(mouseIsPressed==true){
   }
    }
                          createCanvas(windowWidth,windowHeight);
-    background(bgc);
+    background(bgColor);
     DrawSquare(xy,f);
   }  
 }
@@ -156,7 +176,7 @@ function keyPressed(){
   }
   if(play==1){    
     createCanvas(windowWidth,windowHeight);
-    background(bgc);
+    background(bgColor);
     for(let i = 0;i<num;i++){
       xy[i][2]=0;
       xy[i][3]=0;
@@ -199,7 +219,7 @@ function keyPressed(){
       heatmap=0;
     }
     createCanvas(windowWidth,windowHeight);
-    background(bgc);
+    background(bgColor);
     
     DrawSquare(Color,ftemp);
   }
