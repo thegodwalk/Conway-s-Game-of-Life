@@ -24,16 +24,11 @@ let play;
 let www;
 
 let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
-let Cell0R;
-let Cell0G;
-let Cell0B;
-let Cell1R;
-let Cell1G;
-let Cell1B;
+
 let heatmap;
 
-var StartColor=[Cell0R,Cell0G,Cell0B];
-var EndColor=[Cell1R,Cell1G,Cell1B];
+var StartColor=[0,0,0];
+var EndColor=[255,0,0];
 var percentchange=0.1;
 var pen=1;
 var drawPen = true;
@@ -89,9 +84,9 @@ scay=(h-(sepy+dis))/h;
 boom = new Array(num);
 xy = getcoords();
 for(let i = 0;i<num;i++){
-  xy[i][2]=Cell0R;
-  xy[i][3]=Cell0G;
-  xy[i][4]=Cell0B;
+  xy[i][2]=StartColor[0];
+  xy[i][3]=StartColor[1];
+  xy[i][4]=StartColor[2];
 }
 play=0;
   www=0;
@@ -326,9 +321,9 @@ function DrawSquare(Cell,on){
     else if(boom[j*numx+i]==0){
       if(state==3){
         f[j*numx+i]=1;
-        xy[j*numx+i][2]=xy[j*numx+i][2]+(percentchange*(Cell1R-xy[j*numx+i][2]));
-        xy[j*numx+i][3]=xy[j*numx+i][3]+(percentchange*(Cell1G-xy[j*numx+i][3]));
-        xy[j*numx+i][4]=xy[j*numx+i][4]+(percentchange*(Cell1B-xy[j*numx+i][4]));
+        xy[j*numx+i][2]=xy[j*numx+i][2]+(percentchange*(EndColor[0]-xy[j*numx+i][2]));
+        xy[j*numx+i][3]=xy[j*numx+i][3]+(percentchange*(EndColor[1]-xy[j*numx+i][3]));
+        xy[j*numx+i][4]=xy[j*numx+i][4]+(percentchange*(EndColor[2]-xy[j*numx+i][4]));
       }
       else{
         f[j*numx+i]=0;
