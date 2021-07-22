@@ -40,7 +40,7 @@ var EndColor=[Cell1R,Cell1G,Cell1B];
 var percentchange=0.1;
 var pen=1;
 var pensize=1;
-var speed;
+var speed=500;
 
 
 var sizeMax = 500;
