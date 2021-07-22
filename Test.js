@@ -24,37 +24,45 @@ let play;
 let www;
 
 let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
-let heatmap;
-var size = 20;
-var sizeMax = 500;
-var sizeMin = 0;
-var sizeStep = 1;
-let dis = 5;
-let disMax = 40;
-let disMin = 0;
-let disStep = 0.5;
-let bgColor = [255,255,255];
 let Cell0R=0;
 let Cell0G=0;
 let Cell0B=0;
 let Cell1R=255;
 let Cell1G=173;
 let Cell1B=204;
-let StartColor=[Cell0R,Cell0G,Cell0B];
-let EndColor=[Cell1R,Cell1G,Cell1B];
-let percentchange=0.1;
-let percentchangeMax=1;
-let percentchangeMin=0;
-let percentchangeStep=0.05;
-let pen=1;
-let penMax=1;
-let penMin=0;
-let penStep=1;
-let pensize=1;
-let pensizeMin=0;
-let pensizeMax=1;
-let pensizeStep = 1;
+let heatmap;
+var size = 20;
+var dis = 5;
+var bgColor = [255,255,255];
+
+var StartColor=[Cell0R,Cell0G,Cell0B];
+var EndColor=[Cell1R,Cell1G,Cell1B];
+var percentchange=0.1;
+var pen=1;
+var pensize=1;
 var speed;
+
+
+var sizeMax = 500;
+var sizeMin = 0;
+var sizeStep = 1;
+
+var disMax = 40;
+var disMin = 0;
+var disStep = 0.5;
+
+var percentchangeMax=1;
+var percentchangeMin=0;
+var percentchangeStep=0.05;
+
+var penMax=1;
+var penMin=0;
+var penStep=1;
+
+var pensizeMin=0;
+var pensizeMax=1;
+var pensizeStep = 1;
+
 var speedMin=0;
 var speedMax=5000;
 var speedStep=100;
