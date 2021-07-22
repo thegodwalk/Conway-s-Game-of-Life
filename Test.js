@@ -55,9 +55,9 @@ var percentchangeMax=1;
 var percentchangeMin=0;
 var percentchangeStep=0.05;
 
-var pensizeMin=0;
-var pensizeMax=1;
-var pensizeStep = 1;
+var penMin=0;
+var penMax=1;
+var penStep = 1;
 
 var speedMin=0;
 var speedMax=1000;
@@ -71,7 +71,7 @@ function setup(){
   
     createCanvas(windowWidth,windowHeight);
    gui = createGui('LifeNaaaaaah');
-  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'BiggerPen', 'pensize', 'StartColor', 'EndColor');
+  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'BiggerPen', 'StartColor', 'EndColor');
     background(bgColor);
 h = windowHeight;
 w = windowWidth;
