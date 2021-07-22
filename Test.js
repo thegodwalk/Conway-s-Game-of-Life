@@ -327,6 +327,7 @@ function DrawSquare(Cell,on){
         xy[j*numx+i][2]=xy[j*numx+i][2]+(percentchange*(EndColor[0]-xy[j*numx+i][2]));
         xy[j*numx+i][3]=xy[j*numx+i][3]+(percentchange*(EndColor[1]-xy[j*numx+i][3]));
         xy[j*numx+i][4]=xy[j*numx+i][4]+(percentchange*(EndColor[2]-xy[j*numx+i][4]));
+       print(EndColor[0];
       }
       else{
         f[j*numx+i]=0;
