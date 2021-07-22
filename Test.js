@@ -43,29 +43,7 @@ var pensize=1;
 var speed=500;
 
 
-var sizeMax = 500;
-var sizeMin = 0;
-var sizeStep = 1;
 
-var disMax = 40;
-var disMin = 0;
-var disStep = 0.5;
-
-var percentchangeMax=1;
-var percentchangeMin=0;
-var percentchangeStep=0.05;
-
-var penMax=1;
-var penMin=0;
-var penStep=1;
-
-var pensizeMin=0;
-var pensizeMax=1;
-var pensizeStep = 1;
-
-var speedMin=0;
-var speedMax=5000;
-var speedStep=100;
 var gui;
  
 function setup(){
