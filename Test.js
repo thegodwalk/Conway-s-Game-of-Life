@@ -31,9 +31,6 @@ let Cell1R=255;
 let Cell1G=173;
 let Cell1B=204;
 let heatmap;
-var size = 20;
-var dis = 5;
-var bgColor = [255,255,255];
 
 var StartColor=[Cell0R,Cell0G,Cell0B];
 var EndColor=[Cell1R,Cell1G,Cell1B];
@@ -41,6 +38,10 @@ var percentchange=0.1;
 var pen=1;
 var pensize=1;
 var speed=500;
+var size = 20;
+var dis = 5;
+var bgColor = [255,255,255];
+
 
 var sizeMax = 500;
 var sizeMin = 0;
