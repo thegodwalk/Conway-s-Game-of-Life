@@ -1,340 +1,148 @@
- let h;
- let w;
+var numShapes = 20;
+var strokeWidth = 4;
+var strokeColor = '#00ddff';
+var fillColor = [180, 255, 255];
+var drawStroke = true;
+var	drawFill = true;
+var radius = 20;
+var shape = ['circle', 'triangle', 'square', 'pentagon', 'star'];
+var label = 'label';
 
- let sep;
- let numy;
- let numx;
- let num;
- let wow;
- let f;
- let xy;
- let x;
- let y;
- let g;
- let b;
- let r;
- let sepx;
- let sepy;
- let scax;
- let scay;
- let hoho=true;
-let boom;
-let store;
-let play;
-let www;
+// gui
+var visible = true;
+var gui, gui2;
 
-let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
+// dynamic parameters
+var bigRadius;
 
-let heatmap;
+function setup() {
 
-var startColor=[0,0,0];
-var fillColor=[255,0,0];
-var percentchange=0.1;
-var pen=1;
-var drawPen = true;
-var speed=500;
-var size = 20;
-var dis = 5;
-var bgColor = [255,255,255];
+  createCanvas(windowWidth, windowHeight);
 
+  // Calculate big radius
+  bigRadius = height / 3.0;
 
-var sizeMax = 500;
-var sizeMin = 0;
-var sizeStep = 1;
+  // Create Layout GUI
+  gui = createGui('Layout');
+  sliderRange(0, 100, 1);
+  gui.addGlobals('numShapes', 'bigRadius');
 
-var disMax = 40;
-var disMin = 0;
-var disStep = 0.5;
+  // Create Shape GUI
+  gui2 = createGui('Style').setPosition(width - 220, 20);
+  colorMode(HSB);
+  sliderRange(0, 50, 1);
+  gui2.addGlobals('shape', 'label', 'radius', 'drawFill', 'fillColor');
+  sliderRange(0, 10, 0.1);
+  gui2.addGlobals('drawStroke', 'strokeColor', 'strokeWidth');
 
-var percentchangeMax=1;
-var percentchangeMin=0;
-var percentchangeStep=0.05;
-
-var penMin=0;
-var penMax=1;
-var penStep = 1;
-
-var speedMin=0;
-var speedMax=1000;
-var speedStep=25;
-
-
-
-var gui;
- 
-function setup(){
-  
-    createCanvas(windowWidth,windowHeight);
- if(hoho==true){
-   gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'drawPen', 'startColor', 'fillColor');
-  hoho=false;
- }
-    background(bgColor);
-h = windowHeight;
-w = windowWidth;
-sep = size+dis;
-numy = floor(h/sep);
-numx = floor(w/sep);
-num=numx*numy;
-f = new Array(num).fill(0);
-store = new Array(num);
-
-sepx=((w-(numx*sep)));
-sepy=((h-(numy*sep)));
-scax=(w-(sepx+dis))/w;
-scay=(h-(sepy+dis))/h;
-boom = new Array(num);
-xy = getcoords();
-for(let i = 0;i<num;i++){
-  xy[i][2]=startColor[0];
-  xy[i][3]=startColor[1];
-  xy[i][4]=startColor[2];
-}
-play=0;
-  www=0;
-  heatmap=0;
-
+  // Don't loop automatically
+  noLoop();
 
 }
 
-function refresh(){
 
+function draw() {
 
-  play=1;
+  // clear all
+  clear();
 
-  neighbours(f);
-    
-    background(bgColor);
+	// set fill style
+	if(drawFill) {
+		fill(fillColor);
+  print(fillColor);
+	} else {
+	  noFill();
+	}
 
-    DrawSquare(xy,f);
-  
-if(www==1){
- setTimeout(refresh,speed);
+	// set stroke style
+	if(drawStroke) {
+	  stroke(strokeColor);
+	  strokeWeight(strokeWidth);
+	} else {
+	  noStroke();
+	}
+
+	// draw circles arranged in a circle
+	for(var i = 0; i < numShapes; i++) {
+
+		var angle = TWO_PI / numShapes * i;
+		var x = width / 2 + cos(angle) * bigRadius;
+		var y = height / 2 + sin(angle) * bigRadius;
+		var d = 2 * radius;
+
+    // pick a shape
+		switch(shape) {
+
+		  case 'circle':
+		    ellipse(x, y, d, d);
+		    break;
+
+		  case 'square':
+		    rectMode(CENTER);
+		    rect(x, y, d, d);
+		    break;
+
+		  case 'triangle':
+		    ngon(3, x, y, d);
+		    break;
+
+		  case 'pentagon':
+		    ngon(5, x, y, d);
+		    break;
+
+		  case 'star':
+		    star(6, x, y, d/sqrt(3), d);
+		    break;
+
+		}
+
+    // draw a label below the shape
+		push();
+		noStroke();
+		fill(0);
+		textAlign(CENTER);
+		text(label, x, y + radius + 15);
+		pop();
+
+	}
+
 }
 
-  
-}
-function windowResized() {
-  setup();
-}
 
-function draw(){
-  
-if(mouseIsPressed==true){
-  if(drawPen==false){
-    if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
-    g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
-    b =round((mouseY-(sepy+0.75*dis)*scay)/sep);
-      r = ((b)*numx)+(g);
-    f[r]=pen;``
-    store[r]=pen;
-    }
-  }
-   else if(drawPen==true){
-  
-  if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
-    g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
-    b =round((mouseY-(sepy+0.75*dis)*scay)/sep);
-             for(let re = -1; b+re>=0 && b+re<numy && -1<=re && re<=1;re++){
-           for(let pe = -1; g+pe>=0 && g+pe<numx && -1<=pe && pe<=1;pe++){
-    r = ((b+pe)*numx)+(g+re);
-    f[r]=pen;``
-    store[r]=pen;
-           }
-             }
-  }
-   }
-                         createCanvas(windowWidth,windowHeight);
-    background(bgColor);
-    DrawSquare(xy,f);
-  }  
-}
-
-    
-function keyPressed(){
-  
-
-  if(key=='u'){
-    
-    if(www==0){
-      www=1;
-      setTimeout(refresh,speed);
-    }
-    else if(www==1){
-      www=0;
-    }
-  }
-
-    
-  
-  if(keyCode == LEFT_ARROW){
-    speed=abs(speed-100);
-  }
-    if(keyCode == RIGHT_ARROW){
-    speed=abs(speed+100);
-  }
-  if(keyCode==BACKSPACE){
-     stroke(0);
-  if(play==0){
-    setup();
-  }
-  if(play==1){    
-    createCanvas(windowWidth,windowHeight);
-    background(bgColor);
-    for(let i = 0;i<num;i++){
-      xy[i][2]=0;
-      xy[i][3]=0;
-      xy[i][4]=0;
-    }
-    f=store;
-    DrawSquare(xy,f);
-    play=0; 
+// check for keyboard events
+function keyPressed() {
+  switch(key) {
+    // type [F1] to hide / show the GUI
+    case 'p':
+      visible = !visible;
+      if(visible) gui.show(); else gui.hide();
+      break;
   }
 }
-  if(key=='r'){
-      for(let i = 0;i<num;i++){
-    if(f[i]==0){
-    f[i]=round(random(0,1));
-    }
 
-}
-    store=f;
-    DrawSquare(xy,f);
 
-}
-  if(key=='a'){
-    let Color=Array2D(num,5);
-    let ftemp=new Array(num).fill(1);
-    if(heatmap==0){
-      let totbright;
-        for(let i = 0;i<num;i++){
-          totbright = (xy[i][2]+xy[i][3]+xy[i][4])+1;
-        Color[i][4]=255-((xy[i][3]+xy[i][2])/2);
-        Color[i][3]=255-((xy[i][4]+xy[i][2])/2);
-        Color[i][2]=255-((xy[i][4]+xy[i][3])/2);
-      }
-        noStroke();
-        heatmap=1;
-    }
-    else{
-      Color=xy;
-      ftemp=f;
-      stroke(0);
-      heatmap=0;
-    }
-    createCanvas(windowWidth,windowHeight);
-    background(bgColor);
-    
-    DrawSquare(Color,ftemp);
+// draw a regular n-gon with n sides
+function ngon(n, x, y, d) {
+  beginShape();
+  for(var i = 0; i < n; i++) {
+    var angle = TWO_PI / n * i;
+    var px = x + sin(angle) * d / 2;
+    var py = y - cos(angle) * d / 2;
+    vertex(px, py);
   }
-  }
-    
-
-
-  
-
-
-
-
-
-
-
-
-function getcoords(){
-    
-
-    
-
-     xy = Array2D(num,5);
-    
-
-      for(let i = 0;i<numy;i++)
-      {
-        for(let q = 0;q<numx;q++){
-          xy[(i)*numx+(q)][0]=((q*size+q*dis)-(dis*0.75))+(sepx/2+sep/2);
-          xy[(i)*numx+(q)][1]=((i*size+i*dis)-(dis*0.75))+(sepy/2+sep/2);
-
-
-
-   
-           
-      
-      
-      }
-      
-    
-
-
-    
-    
-
-
-}
-return xy;
+  endShape(CLOSE);
 }
 
-function DrawSquare(Cell,on){
-    rectMode(CENTER);
-    
-    let e = 0;
-    let r;
-    let q;
-    for(let i = 0; i<num;i++){
-          r=xy[i][0];
-          q=xy[i][1];
-          fill(Cell[i][2],Cell[i][3],Cell[i][4]);
-            if(on[i]==1){
-            rect(r,q,size,size);
-            }
-            
-        }
-    }
 
-
-
-  function neighbours(boom){
-    let state;
-    f = new Array(num);
-   
-    for(let i = 0;i<numx;i++){
-      for(let j = 0; j<numy;j++){
-
-        state=0;
-         
-         for(let re = -1; i+re>=0 && i+re<numx && -1<=re && re<=1;re++){
-           for(let pe = -1; j+pe>=0 && j+pe<numy && -1<=pe && pe<=1 && abs(re)+abs(pe)!=0;pe++){
-             
-           
-           state=state+
-           boom[((j+pe)*numx)+(i+re)];
-           
-           }
-         } 
-
-    
-    if(boom[j*numx+i]==1){
-        if(state<2||state>3){
-          f[j*numx+i] = 0;
-           }
-          else{
-            f[j*numx+i] = 1;
-          }
-        }
-    else if(boom[j*numx+i]==0){
-      if(state==3){
-        f[j*numx+i]=1;
-        xy[j*numx+i][2]=xy[j*numx+i][2]+(percentchange*(fillColor[0]-xy[j*numx+i][2]));
-        xy[j*numx+i][3]=xy[j*numx+i][3]+(percentchange*(fillColor[1]-xy[j*numx+i][3]));
-        xy[j*numx+i][4]=xy[j*numx+i][4]+(percentchange*(fillColor[2]-xy[j*numx+i][4]));
-       print(fillColor[0]);
-      }
-      else{
-        f[j*numx+i]=0;
-      }
-    }
-    
-      }
+// draw a regular n-pointed star
+function star(n, x, y, d1, d2) {
+  beginShape();
+  for(var i = 0; i < 2 * n; i++) {
+    var d = (i % 2 === 1) ? d1 : d2;
+    var angle = PI / n * i;
+    var px = x + sin(angle) * d / 2;
+    var py = y - cos(angle) * d / 2;
+    vertex(px, py);
   }
-  return f;
-      }
+  endShape(CLOSE);
+}
