@@ -36,7 +36,7 @@ var StartColor=[Cell0R,Cell0G,Cell0B];
 var EndColor=[Cell1R,Cell1G,Cell1B];
 var percentchange=0.1;
 var pen=1;
-var BigPen = true;
+var bigPen = true;
 var speed=500;
 var size = 20;
 var dis = 5;
@@ -124,7 +124,7 @@ function windowResized() {
 function draw(){
   
 if(mouseIsPressed==true){
-  if(BigPen==false){
+  if(bigPen==false){
     if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
     b =round((mouseY-(sepy+0.75*dis)*scay)/sep);
@@ -133,7 +133,7 @@ if(mouseIsPressed==true){
     store[r]=pen;
     }
   }
-   else if(BigPen==true){
+   else if(bigPen==true){
   
   if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
