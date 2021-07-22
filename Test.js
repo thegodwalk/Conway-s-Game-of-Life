@@ -70,7 +70,7 @@ var gui;
 function setup(){
   
     createCanvas(windowWidth,windowHeight);
-   gui = createGui('LifeNaaaaaah');
+   gui = createGui('Life?Naaaaaah');
   gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'BigPen', 'StartColor', 'EndColor');
     background(bgColor);
 h = windowHeight;
