@@ -36,7 +36,7 @@ var StartColor=[Cell0R,Cell0G,Cell0B];
 var EndColor=[Cell1R,Cell1G,Cell1B];
 var percentchange=0.1;
 var pen=1;
-var BiggerPen=true;
+var BigPen = true;
 var speed=500;
 var size = 20;
 var dis = 5;
@@ -71,7 +71,7 @@ function setup(){
   
     createCanvas(windowWidth,windowHeight);
    gui = createGui('LifeNaaaaaah');
-  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'BiggerPen', 'StartColor', 'EndColor');
+  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'BigPen', 'StartColor', 'EndColor');
     background(bgColor);
 h = windowHeight;
 w = windowWidth;
