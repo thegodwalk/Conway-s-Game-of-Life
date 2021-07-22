@@ -36,7 +36,7 @@ var StartColor=[Cell0R,Cell0G,Cell0B];
 var EndColor=[Cell1R,Cell1G,Cell1B];
 var percentchange=0.1;
 var pen=1;
-var pensize=1;
+var BiggerPen=1;
 var speed=500;
 var size = 20;
 var dis = 5;
@@ -55,10 +55,6 @@ var percentchangeMax=1;
 var percentchangeMin=0;
 var percentchangeStep=0.05;
 
-var penMax=1;
-var penMin=0;
-var penStep=1;
-
 var pensizeMin=0;
 var pensizeMax=1;
 var pensizeStep = 1;
@@ -75,7 +71,7 @@ function setup(){
   
     createCanvas(windowWidth,windowHeight);
    gui = createGui('LifeNaaaaaah');
-  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'pensize', 'StartColor', 'EndColor');
+  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'BiggerPen', 'pensize', 'StartColor', 'EndColor');
     background(bgColor);
 h = windowHeight;
 w = windowWidth;
@@ -128,7 +124,7 @@ function windowResized() {
 function draw(){
   
 if(mouseIsPressed==true){
-  if(pensize==0){
+  if(BiggerPen==false){
     if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
     b =round((mouseY-(sepy+0.75*dis)*scay)/sep);
@@ -137,7 +133,7 @@ if(mouseIsPressed==true){
     store[r]=pen;
     }
   }
-   else if(pensize==1){
+   else if(biggerPen==true){
   
   if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
