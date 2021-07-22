@@ -27,8 +27,8 @@ let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
 
 let heatmap;
 
-var StartColor=[0,0,0];
-var EndColor=[255,0,0];
+var startColor=[0,0,0];
+var endColor=[255,0,0];
 var percentchange=0.1;
 var pen=1;
 var drawPen = true;
@@ -67,7 +67,7 @@ function setup(){
     createCanvas(windowWidth,windowHeight);
  if(hoho==true){
    gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'drawPen', 'StartColor', 'EndColor');
+  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'drawPen', 'startColor', 'endColor');
   hoho=false;
  }
     background(bgColor);
@@ -87,9 +87,9 @@ scay=(h-(sepy+dis))/h;
 boom = new Array(num);
 xy = getcoords();
 for(let i = 0;i<num;i++){
-  xy[i][2]=StartColor[0];
-  xy[i][3]=StartColor[1];
-  xy[i][4]=StartColor[2];
+  xy[i][2]=startColor[0];
+  xy[i][3]=startColor[1];
+  xy[i][4]=startColor[2];
 }
 play=0;
   www=0;
@@ -324,10 +324,10 @@ function DrawSquare(Cell,on){
     else if(boom[j*numx+i]==0){
       if(state==3){
         f[j*numx+i]=1;
-        xy[j*numx+i][2]=xy[j*numx+i][2]+(percentchange*(EndColor[0]-xy[j*numx+i][2]));
-        xy[j*numx+i][3]=xy[j*numx+i][3]+(percentchange*(EndColor[1]-xy[j*numx+i][3]));
-        xy[j*numx+i][4]=xy[j*numx+i][4]+(percentchange*(EndColor[2]-xy[j*numx+i][4]));
-        print(EndColor[0]);
+        xy[j*numx+i][2]=xy[j*numx+i][2]+(percentchange*(endColor[0]-xy[j*numx+i][2]));
+        xy[j*numx+i][3]=xy[j*numx+i][3]+(percentchange*(endColor[1]-xy[j*numx+i][3]));
+        xy[j*numx+i][4]=xy[j*numx+i][4]+(percentchange*(endColor[2]-xy[j*numx+i][4]));
+       print(endColor[0]);
       }
       else{
         f[j*numx+i]=0;
