@@ -17,7 +17,7 @@
  let sepy;
  let scax;
  let scay;
- let hoho=false;
+ let hoho=true;
 let boom;
 let store;
 let play;
@@ -65,8 +65,11 @@ var gui;
 function setup(){
   
     createCanvas(windowWidth,windowHeight);
+ if(hoho==true){
    gui = createGui('Life?Naaaaaah');
   gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'drawPen', 'StartColor', 'EndColor');
+  hoho=false;
+ }
     background(bgColor);
 h = windowHeight;
 w = windowWidth;
