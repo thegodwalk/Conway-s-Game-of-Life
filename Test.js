@@ -25,10 +25,10 @@ let www;
 
 let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
 let heatmap;
-let size = 20;
-let sizeMax = 500;
-let sizeMin = 0;
-let sizeStep = 1;
+var size = 20;
+var sizeMax = 500;
+var sizeMin = 0;
+var sizeStep = 1;
 let dis = 5;
 let disMax = 40;
 let disMin = 0;
