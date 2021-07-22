@@ -29,10 +29,10 @@ let heatmap;
 
  
 function setup(){
-    createCanvas(1000,1000);
+    createCanvas(displayHeight,displayWidth);
     background(255);
-h = 1000;
-w = 1000;
+h = displayHeight;
+w = displayWidth;
 size=1;
 dist=2;
 sep = size+dist;
@@ -137,7 +137,7 @@ function keyPressed(){
     setup();
   }
   if(play==1){    
-    createCanvas(1000,1000);
+    createCanvas(displayHeight,displayWidth);
     background(255);
     for(let i = 0;i<num;i++){
       xy[i][2]=0;
