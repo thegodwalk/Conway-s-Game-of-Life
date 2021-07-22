@@ -89,7 +89,6 @@ play=0;
   heatmap=0;
   gui = createGui('LifeNaaaaaah');
   gui.addGlobals('speed');
-noLoop();
 
 }
 
