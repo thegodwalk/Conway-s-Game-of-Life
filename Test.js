@@ -99,7 +99,7 @@ play=0;
   heatmap=0;
  sliderRange(0,100,1);
   gui = createGui('LifeNaaaaaah');
-  gui.addGlobals('percentchange', 'size', 'dis', 'bgColor','speed');
+  gui.addGlobals('percentchange', 'bgColor');
 
 }
 
