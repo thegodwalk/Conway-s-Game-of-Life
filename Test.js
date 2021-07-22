@@ -88,7 +88,7 @@ play=0;
   www=0;
   heatmap=0;
   gui = createGui('LifeNaaaaaah');
- gui.addGlobals('size', 'dis', 'StartColor', 'EndColor', 'speed', 'pen', 'pensize', 'bgColor');
+ gui.addGlobals('size');
 
 
 }
