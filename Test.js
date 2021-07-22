@@ -24,19 +24,19 @@ let play;
 let www;
 
 let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
-let Cell0R=0;
-let Cell0G=0;
-let Cell0B=0;
-let Cell1R=255;
-let Cell1G=173;
-let Cell1B=204;
+let Cell0R;
+let Cell0G;
+let Cell0B;
+let Cell1R;
+let Cell1G;
+let Cell1B;
 let heatmap;
 
 var StartColor=[Cell0R,Cell0G,Cell0B];
 var EndColor=[Cell1R,Cell1G,Cell1B];
 var percentchange=0.1;
 var pen=1;
-var bigPen = true;
+var drawPen = true;
 var speed=500;
 var size = 20;
 var dis = 5;
