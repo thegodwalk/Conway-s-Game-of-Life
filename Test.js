@@ -124,7 +124,7 @@ function windowResized() {
 function draw(){
   
 if(mouseIsPressed==true){
-  if(BiggerPen==false){
+  if(BigPen==false){
     if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
     b =round((mouseY-(sepy+0.75*dis)*scay)/sep);
@@ -133,7 +133,7 @@ if(mouseIsPressed==true){
     store[r]=pen;
     }
   }
-   else if(biggerPen==true){
+   else if(BigPen==true){
   
   if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
