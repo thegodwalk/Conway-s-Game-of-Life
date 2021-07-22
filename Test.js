@@ -34,7 +34,7 @@ function setup(){
    background(255);
 h = windowHeight;
 w = windowWidth;
-size=20;
+size=10;
 dis=5;
 sep = size+dis;
 numy = floor(h/sep);
