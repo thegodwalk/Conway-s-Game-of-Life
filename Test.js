@@ -29,10 +29,10 @@ let heatmap;
 
  
 function setup(){
-    createCanvas(displayHeight,displayWidth);
+    createCanvas(windowWidth,windowHeight);
     background(255);
-h = displayHeight;
-w = displayWidth;
+h = windowHeight;
+w = windowWidth;
 size=1;
 dist=2;
 sep = size+dist;
@@ -137,7 +137,7 @@ function keyPressed(){
     setup();
   }
   if(play==1){    
-    createCanvas(displayHeight,displayWidth);
+    createCanvas(windowWidth,windowHeight);
     background(255);
     for(let i = 0;i<num;i++){
       xy[i][2]=0;
@@ -177,7 +177,7 @@ function keyPressed(){
       stroke(0);
       heatmap=0;
     }
-    createCanvas(displayHeight,displayWidth);
+    createCanvas(windowWidth,windowHeight);
     background(255);
     
     DrawSquare(Color,ftemp);
