@@ -88,7 +88,7 @@ for(let i = 0;i<num;i++){
 play=0;
   www=0;
   heatmap=0;
-  gui = createGui('Life?Naaaaaah');
+  gui = createGui('LifeNaaaaaah');
  gui.addGlobals('size', 'dis', 'StartColor', 'EndColor', 'speed', 'pen', 'pensize', 'bgColor');
 
 
