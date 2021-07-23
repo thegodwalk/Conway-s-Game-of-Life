@@ -79,6 +79,7 @@ function setup(){
   gui.addGlobals('PercentShift', 'Size', 'Distance', 'speed', 'Eraser', 'BiggerPen', 'StartColor', 'EndColor','BackgroundColor');
   hoho=false;
  }
+ noStroke();
     dis=Distance;
   size=Size;
   percentchange=PercentShift;
@@ -204,7 +205,6 @@ function keyPressed(){
     speed=abs(speed+100);
   }
   if(keyCode==BACKSPACE){
-     stroke(0);
   if(play==0){
     setup();
   }
@@ -237,13 +237,11 @@ function keyPressed(){
     let ftemp=new Array(num).fill(1);
     if(heatmap==0){
         RefCol=Color;
-        noStroke();
         heatmap=1;
     }
     else{
       RefCol=xy;
       ftemp=f;
-      stroke(0);
       heatmap=0;
     }
     createCanvas(windowWidth,windowHeight);
