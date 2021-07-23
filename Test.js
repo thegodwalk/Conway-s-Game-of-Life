@@ -212,9 +212,9 @@ function keyPressed(){
     createCanvas(windowWidth,windowHeight);
     background(BGC);
     for(let i = 0;i<num;i++){
-      xy[i][2]=0;
-      xy[i][3]=0;
-      xy[i][4]=0;
+      xy[i][2]=StartR;
+      xy[i][3]=StartG;
+      xy[i][4]=StartB;
     }
     f=store;
     DrawSquare(xy,f);
