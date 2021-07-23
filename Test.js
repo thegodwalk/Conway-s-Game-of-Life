@@ -37,7 +37,7 @@ let heatmap;
 var StartColor='#000000';
 var EndColor='#ffffff';
 var percentchange=0.1;
-var pen=1;
+var pen=true;
 var drawPen = true;
 var speed=500;
 var size = 20;
@@ -56,10 +56,6 @@ var disStep = 0.5;
 var percentchangeMax=1;
 var percentchangeMin=0;
 var percentchangeStep=0.05;
-
-var penMin=0;
-var penMax=1;
-var penStep = 1;
 
 var speedMin=0;
 var speedMax=1000;
