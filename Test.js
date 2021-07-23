@@ -98,7 +98,7 @@ numy = floor(h/sep);
 numx = floor(w/sep);
 num=numx*numy;
 f = new Array(num).fill(0);
-store = new Array(num);
+store = new Array(num).fill(0);
 
 sepx=((w-(numx*sep)));
 sepy=((h-(numy*sep)));
