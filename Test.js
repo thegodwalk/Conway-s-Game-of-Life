@@ -34,11 +34,12 @@ let BGR;
 let BGG;
 let BGB;
 let Color;
-
-
 let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
-
 let heatmap;
+
+var client = new XMLHttpRequest();
+client.open('GET', '/Script.txt');
+const Script = client.response.split(" ");
 
 var Shape = ['Circle', 'Square', 'Triangle', 'Lines'];
 var StartColor='#000000';
