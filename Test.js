@@ -47,7 +47,7 @@ var BiggerPen = true;
 var speed=500;
 var Size = 20;
 var Distance = 5;
-var BackgroundColor = [255,255,255];
+var BackgroundColor = '#000000';
 
 
 var SizeMax = 500;
@@ -74,8 +74,6 @@ function setup(){
   
     createCanvas(windowWidth,windowHeight);
  if(hoho==true){
-   gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('PercentShift', 'Size', 'Distance', 'speed', 'Eraser', 'BiggerPen', 'StartColor', 'EndColor','BackgroundColor');
   hoho=false;
  }
     dis=Distance;
