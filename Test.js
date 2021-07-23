@@ -54,9 +54,9 @@ var Lines = false;
 var LineSameasShape = false;
 
 
-var SizeMax = 500;
+var SizeMax = 100;
 var SizeMin = 1;
-var SizeStep = 1;
+var SizeStep = 0.1;
 
 var DistanceMax = 40;
 var DistanceMin = 0;
