@@ -321,11 +321,12 @@ function DrawSquare(Cell,on){
           q=xy[i][1];
           fill(Cell[i][2],Cell[i][3],Cell[i][4]);
             if(on[i]==1){
+
+             switch(Shape){
                if(Lines==true && heatmap==0){
                stroke(0);
                line(w/2,h/2,r,q);
              }
-             switch(Shape){
               case 'Circle':
                 noStroke();
                 ellipse(r,q,size,size);
