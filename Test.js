@@ -74,6 +74,8 @@ function setup(){
   
     createCanvas(windowWidth,windowHeight);
  if(hoho==true){
+   gui = createGui('Life?Naaaaaah');
+  gui.addGlobals('PercentShift', 'Size', 'Distance', 'speed', 'Eraser', 'BiggerPen', 'StartColor', 'EndColor','BackgroundColor');
   hoho=false;
  }
     dis=Distance;
