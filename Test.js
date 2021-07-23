@@ -30,6 +30,9 @@ let StartB;
 let EndR;
 let EndG;
 let EndB;
+let BGR;
+let BGG;
+let BGB;
 
 
 let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
@@ -44,7 +47,7 @@ var BiggerPen = true;
 var speed=500;
 var Size = 20;
 var Distance = 5;
-var bgColor = [255,255,255];
+var BackgroundColor = [255,255,255];
 
 
 var SizeMax = 500;
@@ -72,13 +75,14 @@ function setup(){
     createCanvas(windowWidth,windowHeight);
  if(hoho==true){
    gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('PercentShift', 'Size', 'Distance', 'speed', 'Eraser', 'BiggerPen', 'StartColor', 'EndColor');
+  gui.addGlobals('PercentShift', 'Size', 'Distance', 'speed', 'Eraser', 'BiggerPen', 'StartColor', 'EndColor','BackgroundColor');
   hoho=false;
  }
     dis=Distance;
   size=Size;
   percentchange=PercentShift;
-    background(bgColor);
+  BGC=BackgroundColor;
+    background(BackgroundColor);
 h = windowHeight;
 w = windowWidth;
 sep = size+dis;
@@ -100,6 +104,10 @@ xy = getcoords();
   EndR=hexToRgb(EndColor).r;
   EndG=hexToRgb(EndColor).g;
   EndB=hexToRgb(EndColor).b;
+  BGR=hexToRgb(BackgroundColor).r;
+  BGG=hexToRgb(BackgroundColor).g;
+  BGB=hexToRgb(BackgroundColor).b;
+  
 for(let i = 0;i<num;i++){
   xy[i][2]=StartR;
   xy[i][3]=StartG;
@@ -121,7 +129,7 @@ function refresh(){
 
   neighbours(f);
     
-    background(bgColor);
+    background(BGC);
 
     DrawSquare(xy,f);
   
@@ -162,7 +170,7 @@ if(mouseIsPressed==true){
   }
    }
                          createCanvas(windowWidth,windowHeight);
-    background(bgColor);
+    background(BGC);
     DrawSquare(xy,f);
   }  
 }
@@ -197,7 +205,7 @@ function keyPressed(){
   }
   if(play==1){    
     createCanvas(windowWidth,windowHeight);
-    background(bgColor);
+    background(BGC);
     for(let i = 0;i<num;i++){
       xy[i][2]=0;
       xy[i][3]=0;
@@ -226,9 +234,9 @@ function keyPressed(){
       let totbright;
         for(let i = 0;i<num;i++){
           totbright = (xy[i][2]+xy[i][3]+xy[i][4])+1;
-        Color[i][4]=255-((xy[i][3]+xy[i][2])/2);
-        Color[i][3]=255-((xy[i][4]+xy[i][2])/2);
-        Color[i][2]=255-((xy[i][4]+xy[i][3])/2);
+        Color[i][4]=BGR+(StartB-xy[i][4]);
+        Color[i][3]=BGG-((xy[i][4]+xy[i][2])/2);
+        Color[i][2]=BGB-((xy[i][4]+xy[i][3])/2);
       }
         noStroke();
         heatmap=1;
@@ -240,7 +248,7 @@ function keyPressed(){
       heatmap=0;
     }
     createCanvas(windowWidth,windowHeight);
-    background(bgColor);
+    background(BGC);
     
     DrawSquare(Color,ftemp);
   }
