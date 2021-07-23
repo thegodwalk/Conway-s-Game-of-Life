@@ -75,6 +75,9 @@ function setup(){
   gui.addGlobals('PercentShift', 'Size', 'Distance', 'speed', 'Eraser', 'BiggerPen', 'StartColor', 'EndColor');
   hoho=false;
  }
+    dis=Distance;
+  size=Size;
+  percentchange=PercentShift;
     background(bgColor);
 h = windowHeight;
 w = windowWidth;
@@ -102,9 +105,7 @@ for(let i = 0;i<num;i++){
   xy[i][3]=StartG;
   xy[i][4]=StartB;
 }
-  dis=Distance;
-  size=Size;
-  percentchange=PercentShift;
+
   
 play=0;
   www=0;
