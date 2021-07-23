@@ -75,7 +75,7 @@ function setup(){
   
     createCanvas(windowWidth,windowHeight);
  if(hoho==true){
-   gui = createGui('Life?Naaaaaah');
+  gui = createGui('Life?Naaaaaah');
   gui.addGlobals('PercentShift', 'Size', 'Distance', 'speed', 'Eraser', 'BiggerPen', 'StartColor', 'EndColor','BackgroundColor');
   hoho=false;
  }
@@ -233,7 +233,7 @@ function keyPressed(){
 
 }
   if(key=='a'){
-    let RefCol=2DArray(num,5);
+    let RefCol=Array2D(num,5);
     let ftemp=new Array(num).fill(1);
     if(heatmap==0){
         RefCol=Color;
@@ -249,7 +249,7 @@ function keyPressed(){
     createCanvas(windowWidth,windowHeight);
     background(BGC);
     
-    DrawSquare(Color,ftemp);
+    DrawSquare(RefCol,ftemp);
   }
   }
     
