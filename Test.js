@@ -80,7 +80,6 @@ function setup(){
   gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'Shape');
   hoho=false;
  }
- noStroke();
     dis=Distance;
   size=Size;
   percentchange=PercentShift;
@@ -319,12 +318,15 @@ function DrawSquare(Cell,on){
             if(on[i]==1){
              switch(Shape){
               case 'Circle':
+                noStroke();
                 ellipse(r,q,size,size);
                 break;
               case 'Triangle':
+               noStroke();
                triangle(r-size/2,q+size/2,r+size/2,q+size/2,r,q-size/2);
                break;
               case 'Square':
+               noStroke();
                rect(r,q,size,size);
                break;
               case 'Lines':
