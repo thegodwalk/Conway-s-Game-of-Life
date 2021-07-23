@@ -354,8 +354,8 @@ function DrawSquare(Cell,on){
 
         state=0;
          
-         for(let re = 0; i+re>=0 && i+re<numx && 0<=re && re<=2;re++){
-           for(let pe = -1; j+pe>=0 && j+pe<numy && -1<=pe && pe<=1 && pe-re!=-1;pe++){
+         for(let re = -1; i+re>=0 && i+re<numx && -1<=re && re<=1;re++){
+           for(let pe = -1; j+pe>=0 && j+pe<numy && -1<=pe && pe<=1 && re-pe!=0;pe++){
              
            
            state=state+
