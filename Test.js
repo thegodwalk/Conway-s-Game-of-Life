@@ -339,7 +339,7 @@ function DrawSquare(Cell,on){
                break;
               case 'Text':
                textAlign(CENTER, CENTER);
-               text(Script[i],r,q,size,size);
+               text(Script[i],r,q,width,size);
                break;
              }
             }
