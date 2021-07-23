@@ -311,9 +311,9 @@ return xy;
 
 function DrawSquare(Cell,on){
     rectMode(CENTER);
-    let i;
-    let r=xy[i][0];;
-    let q=xy[i][1];;
+    let i=0;
+    let r=xy[i][0];
+    let q=xy[i][1];
     
  if(Lines==true && heatmap==0){
     for(i = 0; i<num;i++){
