@@ -324,6 +324,8 @@ function DrawSquare(Cell,on){
                if(Lines==true && heatmap==0){
                stroke(0);
                line(w/2,h/2,r,q);
+               }
+             if(on[i]==1){
               switch(Shape){
 
               case 'Circle':
