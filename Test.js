@@ -37,7 +37,7 @@ let heatmap;
 var StartColor='#000000';
 var EndColor='#ffffff';
 var percentchange=0.1;
-var pen=true;
+var Eraser=true;
 var drawPen = true;
 var speed=500;
 var size = 20;
@@ -70,7 +70,7 @@ function setup(){
     createCanvas(windowWidth,windowHeight);
  if(hoho==true){
    gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'pen', 'drawPen', 'StartColor', 'EndColor');
+  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'Eraser', 'drawPen', 'StartColor', 'EndColor');
   hoho=false;
  }
     background(bgColor);
@@ -136,8 +136,8 @@ if(mouseIsPressed==true){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
     b =round((mouseY-(sepy+0.75*dis)*scay)/sep);
       r = ((b)*numx)+(g);
-    f[r]=pen;``
-    store[r]=pen;
+    f[r]=Eraser;``
+    store[r]=Eraser;
     }
   }
    else if(drawPen==true){
@@ -148,8 +148,8 @@ if(mouseIsPressed==true){
              for(let re = -1; b+re>=0 && b+re<numy && -1<=re && re<=1;re++){
            for(let pe = -1; g+pe>=0 && g+pe<numx && -1<=pe && pe<=1;pe++){
     r = ((b+pe)*numx)+(g+re);
-    f[r]=pen;``
-    store[r]=pen;
+    f[r]=Eraser;``
+    store[r]=Eraser;
            }
              }
   }
