@@ -338,6 +338,7 @@ function DrawSquare(Cell,on){
                line(w/2,h/2,r,q);
                break;
               case 'Text':
+               stroke(Cell[i][2],Cell[i][3],Cell[i][4]);
                textAlign(CENTER);
                text(Script[i],r,q,size,size);
                break;
