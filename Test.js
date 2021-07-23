@@ -268,20 +268,7 @@ function hexToRgb(hex) {
 }
 
 
-
-  
-
-
-
-
-
-
-
-
 function getcoords(){
-    
-
-    
 
      xy = Array2D(num,5);
     
@@ -290,23 +277,8 @@ function getcoords(){
       {
         for(let q = 0;q<numx;q++){
           xy[(i)*numx+(q)][0]=((q*size+q*dis)-(dis*0.75))+(sepx/2+sep/2);
-          xy[(i)*numx+(q)][1]=((i*size+i*dis)-(dis*0.75))+(sepy/2+sep/2);
-
-
-
-   
-           
-      
-      
+          xy[(i)*numx+(q)][1]=((i*size+i*dis)-(dis*0.75))+(sepy/2+sep/2);    
       }
-      
-    
-
-
-    
-    
-
-
 }
 return xy;
 }
@@ -352,7 +324,7 @@ function DrawSquare(Cell,on){
                noStroke();
                rect(r,q,size,size);
                break;
-              case 'Text';
+               case 'Text':
                text(Script[i],r,q,size,size);
                break;
                case 'Num':
