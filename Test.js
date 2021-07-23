@@ -72,8 +72,7 @@ var speedStep=25;
 var gui;
 function preload(){
  PreScript = loadStrings("Script.txt");
- let note = PreScript[0];
- Script = split(note, ' ');
+ Script = split(PreScript, ' ');
 }
  
 function setup(){
