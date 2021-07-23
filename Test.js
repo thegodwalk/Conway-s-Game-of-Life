@@ -355,7 +355,7 @@ function DrawSquare(Cell,on){
                text(Script[i],r,q,size,size);
                break;
                case 'Num':
-                text(int(random(0,9)));
+                text(int(random(0,9)),r,q,size,size);
                 break;
              }
              }
