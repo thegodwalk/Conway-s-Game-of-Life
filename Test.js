@@ -340,6 +340,7 @@ function DrawSquare(Cell,on){
                break;
              }
              if(Lines==true && heatmap==0){
+               stroke(0);
                line(w/2,h/2,r,q);
              }
             }
