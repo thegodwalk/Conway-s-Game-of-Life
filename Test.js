@@ -183,7 +183,6 @@ if(mouseIsPressed==true){
     background(BGC);
     DrawSquare(xy,f);
   }  
- DrawSquare(xy,f);
 }
 
     
