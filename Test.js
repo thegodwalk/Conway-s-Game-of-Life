@@ -323,7 +323,7 @@ function DrawSquare(Cell,on){
             if(on[i]==1){
                if(Lines==true && heatmap==0){
                stroke(0);
-               line(r,q,h/2,w/2);
+               line(r,q,w/2,h/2);
                }
              if(on[i]==1){
               switch(Shape){
