@@ -199,6 +199,14 @@ function keyPressed(){
     Pen=0;
    }
   }
+ if(key == 'b'){
+   if(BiggerPen==false){
+    BiggerPen=true;
+   }
+   else if(BiggerPen==true){
+    BiggerPen=false;
+   }
+  }
 //Start iterations;
   if(key == ' '){
     
