@@ -141,9 +141,7 @@ function refresh(){
 
   neighbours(f);
   
-if(www==1){
- setTimeout(refresh,speed);
-}
+
 
   
 }
