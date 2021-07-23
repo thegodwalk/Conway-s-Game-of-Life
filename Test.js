@@ -191,7 +191,14 @@ if(mouseIsPressed==true){
 
     
 function keyPressed(){
-  
+  if(key == 's'){
+   if(Pen==0){
+    Pen=1;
+   }
+   if(Pen==1){
+    Pen=0;
+   }
+  }
 //Start iterations;
   if(key == ' '){
     
