@@ -39,7 +39,7 @@ let heatmap;
 let PreScript;
 let Script;
 
-var Shape = ['Circle', 'Square', 'Triangle', 'Text'];
+var Shape = ['Circle', 'Square', 'Triangle', 'Text','Num'];
 var StartColor='#ff0000';
 var EndColor='#0000ff';
 var PercentShift=0.1;
@@ -312,6 +312,7 @@ return xy;
 
 function DrawSquare(Cell,on){
  rectMode(CENTER);
+ textAlign(CENTER);
  let r;
  let q;
 
@@ -351,9 +352,11 @@ function DrawSquare(Cell,on){
                rect(r,q,size,size);
                break;
               case 'Text':
-               textAlign(CENTER);
                text(Script[i],r,q,size,size);
                break;
+               case 'Num':
+                text(int(random(0,9)));
+                break;
              }
              }
             
