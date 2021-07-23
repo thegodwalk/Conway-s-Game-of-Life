@@ -318,7 +318,7 @@ function DrawSquare(Cell,on){
           q=xy[i][1];
           fill(Cell[i][2],Cell[i][3],Cell[i][4]);
             if(on[i]==1){
-            rect(r,q,size,size);
+            ellipse(r,q,size,size);
             }
             
         }
