@@ -234,9 +234,9 @@ function keyPressed(){
       let totbright;
         for(let i = 0;i<num;i++){
           totbright = (xy[i][2]+xy[i][3]+xy[i][4])+1;
-        Color[i][4]=BGR+(StartB-xy[i][4]);
-        Color[i][3]=BGG-((xy[i][4]+xy[i][2])/2);
-        Color[i][2]=BGB-((xy[i][4]+xy[i][3])/2);
+        Color[i][4]=BGB+(StartB-xy[i][4]);
+        Color[i][3]=BGG+(StartG-xy[i][3]);
+        Color[i][2]=BGR+(StartR-xy[i][2]);
       }
         noStroke();
         heatmap=1;
