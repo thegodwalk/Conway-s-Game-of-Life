@@ -162,7 +162,9 @@ if(mouseIsPressed==true){
     b =round((mouseY-(sepy+0.75*dis)*scay)/sep);
       r = ((b)*numx)+(g);
     f[r]=Pen;``
+    if(play==0){
     store[r]=Pen;
+    }
     }
   }
    else if(BiggerPen==true){
@@ -174,7 +176,9 @@ if(mouseIsPressed==true){
            for(let pe = -1; g+pe>=0 && g+pe<numx && -1<=pe && pe<=1;pe++){
     r = ((b+pe)*numx)+(g+re);
     f[r]=Pen;``
+    if(play==0){
     store[r]=Pen;
+    }
            }
              }
   }
