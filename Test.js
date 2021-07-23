@@ -310,22 +310,26 @@ return xy;
 }
 
 function DrawSquare(Cell,on){
-    rectMode(CENTER);
-    let i=0;
-    let r=xy[i][0];
-    let q=xy[i][1];
+ rectMode(CENTER);
+ let r;
+ let q;
+
     
  if(Lines==true && heatmap==0){
-    for(i = 0; i<num;i++){
+    for(let i = 0; i<num;i++){
         if(on[i]==1){
+           r=xy[i][0];
+           q=xy[i][1];
            stroke(0);
            line(r,q,w/2,h/2);
         }
     }
  }
-    for(i = 0; i<num;i++){
+    for(let i = 0; i<num;i++){
           fill(Cell[i][2],Cell[i][3],Cell[i][4]);
              if(on[i]==1){
+              r=xy[i][0];
+              q=xy[i][1];              
               switch(Shape){
 
               case 'Circle':
