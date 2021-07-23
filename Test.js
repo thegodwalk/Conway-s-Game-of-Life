@@ -217,6 +217,7 @@ function keyPressed(){
       xy[i][4]=StartB;
     }
     f=store;
+    Color=Array2D(num,5);
     DrawSquare(xy,f);
     play=0; 
   }
