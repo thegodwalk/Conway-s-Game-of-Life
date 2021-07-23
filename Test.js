@@ -33,6 +33,7 @@ let EndB;
 let BGR;
 let BGG;
 let BGB;
+let Color;
 
 
 let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
@@ -97,6 +98,7 @@ sepy=((h-(numy*sep)));
 scax=(w-(sepx+dis))/w;
 scay=(h-(sepy+dis))/h;
 boom = new Array(num);
+Color=Array2D(num,5);
 xy = getcoords();
   StartR=hexToRgb(StartColor).r;
   StartG=hexToRgb(StartColor).g;
@@ -112,6 +114,9 @@ for(let i = 0;i<num;i++){
   xy[i][2]=StartR;
   xy[i][3]=StartG;
   xy[i][4]=StartB;
+  Color[i][2]=BGR;
+  Color[i][3]=BGG;
+  Color[i][4]=BGB;
 }
 
   
@@ -228,21 +233,15 @@ function keyPressed(){
 
 }
   if(key=='a'){
-    let Color=Array2D(num,5);
+    let RefCol=2DArray(num,5);
     let ftemp=new Array(num).fill(1);
     if(heatmap==0){
-      let totbright;
-        for(let i = 0;i<num;i++){
-          totbright = (xy[i][2]+xy[i][3]+xy[i][4])+1;
-        Color[i][4]=BGB*(xy[i][4]/255);
-        Color[i][3]=BGG*(xy[i][3]/255);
-        Color[i][2]=BGR*(xy[i][2]/255);
-      }
+        RefCol=Color;
         noStroke();
         heatmap=1;
     }
     else{
-      Color=xy;
+      RefCol=xy;
       ftemp=f;
       stroke(0);
       heatmap=0;
@@ -360,7 +359,9 @@ function DrawSquare(Cell,on){
         xy[j*numx+i][2]=xy[j*numx+i][2]+(percentchange*(EndR-xy[j*numx+i][2]));
         xy[j*numx+i][3]=xy[j*numx+i][3]+(percentchange*(EndG-xy[j*numx+i][3]));
         xy[j*numx+i][4]=xy[j*numx+i][4]+(percentchange*(EndB-xy[j*numx+i][4]));
-       print(EndColor[0]);
+        Color[j*numx+i][2]=Color[j*numx+i][2]+(percentchange*(EndR-Color[j*numx+i][2]));
+        Color[j*numx+i][3]=Color[j*numx+i][3]+(percentchange*(EndG-Color[j*numx+i][3]));
+        Color[j*numx+i][4]=Color[j*numx+i][4]+(percentchange*(EndB-Color[j*numx+i][4]));
       }
       else{
         f[j*numx+i]=0;
