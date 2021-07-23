@@ -39,12 +39,12 @@ let heatmap;
 let PreScript;
 let Script;
 
-var Shape = ['Circle', 'Square', 'Triangle', 'Text','Num'];
+var Shape = ['Square', 'Circle', 'Triangle', 'Text','Num'];
 var StartColor='#ff0000';
 var EndColor='#0000ff';
 var LineColor ='#000000';
 var PercentShift=0.1;
-var Pen=false;
+var Pen=true;
 var BiggerPen = true;
 var speed=300;
 var Size = 20;
