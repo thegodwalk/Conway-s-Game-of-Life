@@ -72,7 +72,6 @@ var speedStep=25;
 var gui;
 function preload(){
  PreScript = loadStrings("Script.txt");
- Script = split(PreScript, ' ');
 }
  
 function setup(){
@@ -81,6 +80,7 @@ function setup(){
  if(hoho==true){
   gui = createGui('Life?Naaaaaah');
   gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'Shape');
+  Script = split(PreScript[0], ' ');
   hoho=false;
  }
     dis=Distance;
