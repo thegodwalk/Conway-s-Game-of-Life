@@ -324,8 +324,7 @@ function DrawSquare(Cell,on){
                if(Lines==true && heatmap==0){
                stroke(0);
                line(w/2,h/2,r,q);
-             }
-             switch(Shape){
+              switch(Shape){
 
               case 'Circle':
                 noStroke();
@@ -344,6 +343,8 @@ function DrawSquare(Cell,on){
                text(Script[i],r,q,size,size);
                break;
              }
+             }
+            
 
             }
             
