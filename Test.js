@@ -36,10 +36,8 @@ let BGB;
 let Color;
 let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
 let heatmap;
-
-var client = new XMLHttpRequest();
-client.open('GET', '/Script.txt');
-const Script = client.response.split(" ");
+let PreScript;
+let Script;
 
 var Shape = ['Circle', 'Square', 'Triangle', 'Lines', 'Text'];
 var StartColor='#000000';
@@ -72,6 +70,10 @@ var speedStep=25;
 
 
 var gui;
+function preLoad(){
+ PreScript = loadstrings("Script.txt");
+ Script = PreScript[0].split;
+}
  
 function setup(){
   
