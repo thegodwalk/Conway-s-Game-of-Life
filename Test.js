@@ -47,7 +47,7 @@ var BiggerPen = true;
 var speed=500;
 var Size = 20;
 var Distance = 5;
-var BackgroundColor = '#000000';
+var BackgroundColor = '#ffffff';
 
 
 var SizeMax = 500;
