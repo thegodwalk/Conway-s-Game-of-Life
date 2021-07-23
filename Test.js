@@ -310,7 +310,7 @@ return xy;
 
 function DrawSquare(Cell,on){
     rectMode(CENTER);
-     textAlign(CENTER, CENTER);
+     
     
     let e = 0;
     let r;
@@ -338,6 +338,7 @@ function DrawSquare(Cell,on){
                line(w/2,h/2,r,q);
                break;
               case 'Text':
+               textAlign(CENTER, CENTER);
                text(Script[i],r,q,size,size);
                break;
              }
