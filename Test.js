@@ -1,6 +1,8 @@
 let h;
  let w;
-
+ let dis;
+ let size;
+ let percentchange;
  let sep;
  let numy;
  let numx;
@@ -36,26 +38,26 @@ let heatmap;
 
 var StartColor='#000000';
 var EndColor='#ffffff';
-var percentchange=0.1;
+var PercentShift=0.1;
 var Eraser=true;
 var BiggerPen = true;
 var speed=500;
-var size = 20;
-var dis = 5;
+var Size = 20;
+var Distance = 5;
 var bgColor = [255,255,255];
 
 
-var sizeMax = 500;
-var sizeMin = 0;
-var sizeStep = 1;
+var SizeMax = 500;
+var SizeMin = 0;
+var SizeStep = 1;
 
-var disMax = 40;
-var disMin = 0;
-var disStep = 0.5;
+var DistanceMax = 40;
+var DistanceMin = 0;
+var DistanceStep = 0.5;
 
-var percentchangeMax=1;
-var percentchangeMin=0;
-var percentchangeStep=0.05;
+var PercentShiftMax=1;
+var PercentShiftMin=0;
+var PercentShiftStep=0.05;
 
 var speedMin=0;
 var speedMax=1000;
@@ -70,7 +72,7 @@ function setup(){
     createCanvas(windowWidth,windowHeight);
  if(hoho==true){
    gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'Eraser', 'BiggerPen', 'StartColor', 'EndColor');
+  gui.addGlobals('PercentShift', 'Size', 'Distance', 'speed', 'Eraser', 'BiggerPen', 'StartColor', 'EndColor');
   hoho=false;
  }
     background(bgColor);
@@ -100,6 +102,10 @@ for(let i = 0;i<num;i++){
   xy[i][3]=StartG;
   xy[i][4]=StartB;
 }
+  dis=Distance;
+  size=Size;
+  percentchange=PercentShift;
+  
 play=0;
   www=0;
   heatmap=0;
