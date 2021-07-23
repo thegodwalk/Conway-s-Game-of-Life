@@ -335,6 +335,7 @@ function DrawSquare(Cell,on){
                break;
               case 'Lines':
                stroke(Cell[i][2],Cell[i][3],Cell[i][4]);
+               rect(r,q,size,size);
                line(w/2,h/2,r,q);
                break;
               case 'Text':
