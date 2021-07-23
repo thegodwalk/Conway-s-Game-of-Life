@@ -140,9 +140,11 @@ function refresh(){
   play=1;
 
   neighbours(f);
-  
-
-
+  background(BGC);
+  DrawSquare(xy,f); 
+  if(www==1){
+ setTimeout(refresh,speed);
+  }
   
 }
 function windowResized() {
