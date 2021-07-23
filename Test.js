@@ -139,11 +139,7 @@ function refresh(){
 
   play=1;
 
-  f=neighbours(f);
-    
-    background(BGC);
-
-    DrawSquare(xy,f);
+  neighbours(f);
   
 if(www==1){
  setTimeout(refresh,speed);
