@@ -349,7 +349,7 @@ function DrawSquare(Cell,on){
         state=0;
          
          for(let re = -1; i+re>=0 && i+re<numx && -1<=re && re<=1;re++){
-           for(let pe = -1; j+pe>=0 && j+pe<numy && -1<=pe && pe<=1 && re-pe!=0;pe++){
+           for(let pe = -1; j+pe>=0 && j+pe<numy && -1<=pe && pe<=1 && abs(re)+abs(pe)!=0;pe++){
              
            
            state=state+
