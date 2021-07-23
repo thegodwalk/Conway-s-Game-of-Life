@@ -62,9 +62,9 @@ var DistanceMax = 40;
 var DistanceMin = 0;
 var DistanceStep = 0.5;
 
-var PercentShiftMax=1;
+var PercentShiftMax=0.5;
 var PercentShiftMin=0;
-var PercentShiftStep=0.05;
+var PercentShiftStep=0.01;
 
 var speedMin=0;
 var speedMax=1000;
