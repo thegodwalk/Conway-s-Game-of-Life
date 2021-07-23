@@ -187,7 +187,7 @@ if(mouseIsPressed==true){
 function keyPressed(){
   
 
-  if(key=='u'){
+  if(keyCode == SPACEBAR){
     
     if(www==0){
       www=1;
@@ -200,13 +200,13 @@ function keyPressed(){
 
     
   
-  if(keyCode == LEFT_ARROW){
+  if(key == 'a'){
     speed=abs(speed-100);
   }
-    if(keyCode == RIGHT_ARROW){
+    if(key == 'd'){
     speed=abs(speed+100);
   }
-  if(keyCode==BACKSPACE){
+  if(key=='r'){
   if(play==0){
     setup();
   }
@@ -225,7 +225,7 @@ function keyPressed(){
     play=0; 
   }
 }
-  if(key=='r'){
+  if(key=='e'){
       for(let i = 0;i<num;i++){
     if(f[i]==0){
     f[i]=round(random(0,1));
@@ -236,7 +236,7 @@ function keyPressed(){
     DrawSquare(xy,f);
 
 }
-  if(key=='a'){
+  if(key=='w'){
     let RefCol=Array2D(num,5);
     let ftemp=new Array(num).fill(1);
     if(heatmap==0){
