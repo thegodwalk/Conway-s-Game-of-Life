@@ -222,6 +222,7 @@ function keyPressed(){
       xy[i][3]=StartG;
       xy[i][4]=StartB;
     }
+   f= new Array(num);
     f=store;
     Color=Array2D(num,5);
     DrawSquare(xy,f);
