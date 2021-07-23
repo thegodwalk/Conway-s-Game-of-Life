@@ -289,7 +289,9 @@ function DrawSquare(Cell,on){
  let r;
  let q;
 
-    
+  if(Shape=='Num'){
+   textSize(20);
+  }
  if(Lines==true && heatmap==0){
     for(let i = 0; i<num;i++){
         if(on[i]==1){
@@ -329,7 +331,6 @@ function DrawSquare(Cell,on){
                break;
                case 'Num':
                 noStroke();
-                textSize(20);
                 text(int(random(0,9)),r,q,size,size);
                 break;
              }
