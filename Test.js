@@ -187,7 +187,7 @@ if(mouseIsPressed==true){
 function keyPressed(){
   
 
-  if(keyCode == SPACEBAR){
+  if(key == ' '){
     
     if(www==0){
       www=1;
