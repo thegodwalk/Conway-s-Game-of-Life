@@ -311,25 +311,19 @@ return xy;
 
 function DrawSquare(Cell,on){
     rectMode(CENTER);
-     
+    let i;
+    let r=xy[i][0];;
+    let q=xy[i][1];;
     
-    let e = 0;
-    let r;
-    let q;
  if(Lines==true && heatmap==0){
-    for(let i = 0; i<num;i++){
-          r=xy[i][0];
-          q=xy[i][1];
-            if(on[i]==1){
-               i
-               stroke(0);
-               line(r,q,w/2,h/2);
-               }
+    for(i = 0; i<num;i++){
+        if(on[i]==1){
+           stroke(0);
+           line(r,q,w/2,h/2);
+        }
     }
  }
-    for(let i = 0; i<num;i++){
-          r=xy[i][0];
-          q=xy[i][1];
+    for(i = 0; i<num;i++){
           fill(Cell[i][2],Cell[i][3],Cell[i][4]);
              if(on[i]==1){
               switch(Shape){
