@@ -42,7 +42,7 @@ let Script;
 var Shape = ['Circle', 'Square', 'Triangle', 'Text','Num'];
 var StartColor='#ff0000';
 var EndColor='#0000ff';
-var LineColor ='#ffffff';
+var LineColor ='#000000';
 var PercentShift=0.1;
 var Pen=false;
 var BiggerPen = true;
