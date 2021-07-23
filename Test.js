@@ -40,20 +40,21 @@ let PreScript;
 let Script;
 
 var Shape = ['Circle', 'Square', 'Triangle', 'Text'];
-var StartColor='#000000';
-var EndColor='#ffffff';
+var StartColor='#ff0000';
+var EndColor='#0000ff';
 var PercentShift=0.1;
 var Pen=false;
 var BiggerPen = true;
-var speed=500;
+var speed=300;
 var Size = 20;
 var Distance = 5;
 var BackgroundColor = '#ffffff';
 var Lines = false;
+var LineSameasShape = false;
 
 
 var SizeMax = 500;
-var SizeMin = 0;
+var SizeMin = 1;
 var SizeStep = 1;
 
 var DistanceMax = 40;
@@ -80,7 +81,7 @@ function setup(){
     createCanvas(windowWidth,windowHeight);
  if(hoho==true){
   gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'Shape', 'Lines');
+  gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'Shape', 'Lines', 'LineSameasShape');
   Script = split(PreScript[0], ' ');
   hoho=false;
  }
@@ -320,7 +321,12 @@ function DrawSquare(Cell,on){
         if(on[i]==1){
            r=xy[i][0];
            q=xy[i][1];
-           stroke(0);
+           if(LineSameasShape==true){
+            stroke(Cell[i][2],Cell[i][3],Cell[i][4]);
+           }
+           else{
+            stroke(0);
+           }
            line(r,q,w/2,h/2);
         }
     }
