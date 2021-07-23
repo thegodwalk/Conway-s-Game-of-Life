@@ -316,15 +316,21 @@ function DrawSquare(Cell,on){
     let e = 0;
     let r;
     let q;
+ if(Lines==true && heatmap==0){
+    for(let i = 0; i<num;i++){
+          r=xy[i][0];
+          q=xy[i][1];
+            if(on[i]==1){
+               i
+               stroke(0);
+               line(r,q,w/2,h/2);
+               }
+    }
+ }
     for(let i = 0; i<num;i++){
           r=xy[i][0];
           q=xy[i][1];
           fill(Cell[i][2],Cell[i][3],Cell[i][4]);
-            if(on[i]==1){
-               if(Lines==true && heatmap==0){
-               stroke(0);
-               line(r,q,w/2,h/2);
-               }
              if(on[i]==1){
               switch(Shape){
 
@@ -351,7 +357,7 @@ function DrawSquare(Cell,on){
             }
             
         }
-    }
+    
 
 
 
