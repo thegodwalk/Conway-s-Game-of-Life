@@ -195,7 +195,7 @@ function keyPressed(){
    if(Pen==0){
     Pen=1;
    }
-   if(Pen==1){
+   else if(Pen==1){
     Pen=0;
    }
   }
