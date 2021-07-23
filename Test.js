@@ -77,7 +77,7 @@ function setup(){
     createCanvas(windowWidth,windowHeight);
  if(hoho==true){
   gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'Shape', 'BackgroundColor');
+  gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'Shape');
   hoho=false;
  }
  noStroke();
@@ -323,6 +323,12 @@ function DrawSquare(Cell,on){
                 break;
               case 'Triangle':
                triangle(r-size/2,q+size/2,r+size/2,q+size/2,r,q-size/2);
+               break;
+              case 'Square':
+               rect(r,q,size,size);
+               break;
+              case 'Lines':
+               line(xy[0][0],xy[0][1],r,q);
                break;
              }
             }
