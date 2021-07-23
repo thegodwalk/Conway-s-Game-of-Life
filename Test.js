@@ -202,11 +202,11 @@ function keyPressed(){
 
     
  //Speed+;
-  if(key == 'a'){
+  if(key == 'd'){
     speed=abs(speed-100);
   }
  //Speed-;
-    if(key == 'd'){
+    if(key == 'a'){
     speed=abs(speed+100);
   }
  //1st press- Return grid to pre iteration state;
