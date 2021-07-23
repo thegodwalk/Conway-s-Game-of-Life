@@ -49,22 +49,22 @@ var BiggerPen = true;
 var speed=300;
 var Size = 20;
 var Distance = 5;
-var BackgroundColor = '#ffffff';
+var BackgroundColor = '#000000';
 var Lines = false;
-var LineSameasShape = false;
+var LineSameasShape = true;
 
 
 var SizeMax = 100;
 var SizeMin = 1;
 var SizeStep = 0.1;
 
-var DistanceMax = 40;
+var DistanceMax = 10;
 var DistanceMin = 0;
-var DistanceStep = 0.5;
+var DistanceStep = 0.1;
 
-var PercentShiftMax=0.25;
+var PercentShiftMax=0.1;
 var PercentShiftMin=0;
-var PercentShiftStep=0.005;
+var PercentShiftStep=0.001;
 
 var speedMin=0;
 var speedMax=1000;
