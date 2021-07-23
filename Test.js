@@ -73,6 +73,7 @@ var speedStep=25;
 
 
 var gui;
+//Loading text file;
 function preload(){
  PreScript = loadStrings("Script.txt");
 }
@@ -80,6 +81,7 @@ function preload(){
 function setup(){
   
     createCanvas(windowWidth,windowHeight);
+ //Creates Gui and parses array of text, runs only once per site load;
  if(hoho==true){
   gui = createGui('Life?Naaaaaah');
   gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'LineColor', 'Shape', 'Lines', 'LineSameasShape');
@@ -133,7 +135,7 @@ play=0;
 
 
 }
-
+//Calls to neighbours logic function every speed ms and draws resultant array;
 function refresh(){
 
 
@@ -141,7 +143,7 @@ function refresh(){
 
   f=neighbours(f);
   background(BGC);
-  DrawSquare(xy,f); 
+  DrawShape(xy,f); 
   if(www==1){
  setTimeout(refresh,speed);
   }
@@ -179,14 +181,14 @@ if(mouseIsPressed==true){
    }
                          createCanvas(windowWidth,windowHeight);
     background(BGC);
-    DrawSquare(xy,f);
+    DrawShape(xy,f);
   }  
 }
 
     
 function keyPressed(){
   
-
+//Start iterations;
   if(key == ' '){
     
     if(www==0){
@@ -199,13 +201,17 @@ function keyPressed(){
   }
 
     
-  
+ //Speed+;
   if(key == 'a'){
     speed=abs(speed-100);
   }
+ //Speed-;
     if(key == 'd'){
     speed=abs(speed+100);
   }
+ //1st press- Return grid to pre iteration state;
+ //2nd press- Refresh grid (resets all values);
+ //Note - If any iterations are run between press 1 and 2, cycle is reset (refresh sets play=1);
   if(key=='r'){
   if(play==0){
     setup();
@@ -221,10 +227,11 @@ function keyPressed(){
    f= new Array(num);
     f=store;
     Color=Array2D(num,5);
-    DrawSquare(xy,f);
+    DrawShape(xy,f);
     play=0; 
   }
 }
+ //Set random layout of live cells:
   if(key=='e'){
       for(let i = 0;i<num;i++){
     if(f[i]==0){
@@ -233,9 +240,10 @@ function keyPressed(){
 
 }
     store=f;
-    DrawSquare(xy,f);
+    DrawShape(xy,f);
 
 }
+ //Toggle Heatmap;
   if(key=='w'){
     let RefCol=Array2D(num,5);
     let ftemp=new Array(num).fill(1);
@@ -251,10 +259,10 @@ function keyPressed(){
     createCanvas(windowWidth,windowHeight);
     background(BGC);
     
-    DrawSquare(RefCol,ftemp);
+    DrawShape(RefCol,ftemp);
   }
   }
-    
+ //Convert hex color value (from gui) to rgb;   
 function hexToRgb(hex) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result ? {
@@ -264,7 +272,7 @@ function hexToRgb(hex) {
   } : null;
 }
 
-
+//nightmarenightmarenightmare- Obtains coordinates of each cell to make a centered grid;
 function getcoords(){
 
      xy = Array2D(num,5);
@@ -279,8 +287,8 @@ function getcoords(){
 }
 return xy;
 }
-
-function DrawSquare(Cell,on){
+//Drawing live cells (all cells with a value of 1 in on[] array);
+function DrawShape(Cell,on){
  rectMode(CENTER);
  textAlign(CENTER);
  let r;
@@ -304,6 +312,7 @@ function DrawSquare(Cell,on){
         }
     }
  }
+ //drawing shape;
     for(let i = 0; i<num;i++){
           fill(Cell[i][2],Cell[i][3],Cell[i][4]);
              if(on[i]==1){
@@ -339,7 +348,7 @@ function DrawSquare(Cell,on){
         }
     
 
-
+//Returns array of live cells (Tempf) given array of live cells in previous instance (boom);
 
   function neighbours(boom){
     let state;
@@ -349,6 +358,7 @@ function DrawSquare(Cell,on){
       for(let j = 0; j<numy;j++){
 
         state=0;
+       //Cycling through columns (i+re) and rows (j+pe), totalling the number of live neighbours (state);
          
          for(let re = -1; i+re>=0 && i+re<numx && -1<=re && re<=1;re++){
            for(let pe = -1; j+pe>=0 && j+pe<numy && -1<=pe && pe<=1;pe++){
@@ -360,7 +370,7 @@ function DrawSquare(Cell,on){
            
            }
          } 
-
+//changing cell state based off # of live neighbours;
     if(state!=0){
      print(state);
     }
@@ -374,10 +384,13 @@ function DrawSquare(Cell,on){
         }
     else if(boom[j*numx+i]==0){
       if(state==3){
+
         Tempf[j*numx+i]=1;
+       //Sets color of cell in next instance;       
         xy[j*numx+i][2]=xy[j*numx+i][2]+(percentchange*(EndR-xy[j*numx+i][2]));
         xy[j*numx+i][3]=xy[j*numx+i][3]+(percentchange*(EndG-xy[j*numx+i][3]));
         xy[j*numx+i][4]=xy[j*numx+i][4]+(percentchange*(EndB-xy[j*numx+i][4]));
+       //Sets color of cell in heatmap;
         Color[j*numx+i][2]=Color[j*numx+i][2]+(percentchange*(EndR-Color[j*numx+i][2]));
         Color[j*numx+i][3]=Color[j*numx+i][3]+(percentchange*(EndG-Color[j*numx+i][3]));
         Color[j*numx+i][4]=Color[j*numx+i][4]+(percentchange*(EndB-Color[j*numx+i][4]));
