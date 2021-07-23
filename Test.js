@@ -39,7 +39,7 @@ let heatmap;
 let PreScript;
 let Script;
 
-var Shape = ['Circle', 'Square', 'Triangle', 'Lines', 'Text'];
+var Shape = ['Circle', 'Square', 'Triangle', 'Text'];
 var StartColor='#000000';
 var EndColor='#ffffff';
 var PercentShift=0.1;
@@ -49,6 +49,7 @@ var speed=500;
 var Size = 20;
 var Distance = 5;
 var BackgroundColor = '#ffffff';
+var Lines = false;
 
 
 var SizeMax = 500;
@@ -79,7 +80,7 @@ function setup(){
     createCanvas(windowWidth,windowHeight);
  if(hoho==true){
   gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'Shape');
+  gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'Shape', 'Lines');
   Script = split(PreScript[0], ' ');
   hoho=false;
  }
@@ -333,15 +334,14 @@ function DrawSquare(Cell,on){
                noStroke();
                rect(r,q,size,size);
                break;
-              case 'Lines':
-               stroke(Cell[i][2],Cell[i][3],Cell[i][4]);
-               rect(r,q,size,size);
-               line(w/2,h/2,r,q);
-               break;
               case 'Text':
                textAlign(CENTER);
                text(Script[i],r,q,size,size);
                break;
+             }
+             if(Lines==true){
+               stroke(Cell[i][2],Cell[i][3],Cell[i][4]);
+               line(w/2,h/2,r,q);
              }
             }
             
