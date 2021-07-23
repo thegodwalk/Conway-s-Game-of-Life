@@ -310,6 +310,7 @@ return xy;
 
 function DrawSquare(Cell,on){
     rectMode(CENTER);
+     textAlign(CENTER, CENTER);
     
     let e = 0;
     let r;
