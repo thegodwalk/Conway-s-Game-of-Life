@@ -35,7 +35,7 @@ let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
 let heatmap;
 
 var StartColor='#000000';
-var EndColor='ffffff';
+var EndColor='#ffffff';
 var percentchange=0.1;
 var pen=1;
 var drawPen = true;
