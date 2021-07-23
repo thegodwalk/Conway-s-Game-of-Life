@@ -38,7 +38,7 @@ var StartColor='#000000';
 var EndColor='#ffffff';
 var percentchange=0.1;
 var Eraser=true;
-var drawPen = true;
+var BiggerPen = true;
 var speed=500;
 var size = 20;
 var dis = 5;
@@ -70,7 +70,7 @@ function setup(){
     createCanvas(windowWidth,windowHeight);
  if(hoho==true){
    gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'Eraser', 'drawPen', 'StartColor', 'EndColor');
+  gui.addGlobals('percentchange', 'size', 'dis', 'speed', 'Eraser', 'BiggerPen', 'StartColor', 'EndColor');
   hoho=false;
  }
     background(bgColor);
@@ -131,7 +131,7 @@ function windowResized() {
 function draw(){
   
 if(mouseIsPressed==true){
-  if(drawPen==false){
+  if(BiggerPen==false){
     if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
     b =round((mouseY-(sepy+0.75*dis)*scay)/sep);
@@ -140,7 +140,7 @@ if(mouseIsPressed==true){
     store[r]=Eraser;
     }
   }
-   else if(drawPen==true){
+   else if(BiggerPen==true){
   
   if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
