@@ -41,7 +41,7 @@ var client = new XMLHttpRequest();
 client.open('GET', '/Script.txt');
 const Script = client.response.split(" ");
 
-var Shape = ['Circle', 'Square', 'Triangle', 'Lines'];
+var Shape = ['Circle', 'Square', 'Triangle', 'Lines', 'Text'];
 var StartColor='#000000';
 var EndColor='#ffffff';
 var PercentShift=0.1;
@@ -333,6 +333,9 @@ function DrawSquare(Cell,on){
               case 'Lines':
                stroke(Cell[i][2],Cell[i][3],Cell[i][4]);
                line(w/2,h/2,r,q);
+               break;
+              case 'Text':
+               text(Script[i],r,q,size,size);
                break;
              }
             }
