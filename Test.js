@@ -364,7 +364,9 @@ function DrawSquare(Cell,on){
            }
          } 
 
-    
+    if(state!=0){
+     print(state);
+    }
     if(boom[j*numx+i]==1){
         if(state<2||state>3){
           Tempf[j*numx+i] = 0;
