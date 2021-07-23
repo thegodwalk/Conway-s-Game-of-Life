@@ -139,7 +139,7 @@ function refresh(){
 
   play=1;
 
-  neighbours(f);
+  f=neighbours(f);
   background(BGC);
   DrawSquare(xy,f); 
   if(www==1){
