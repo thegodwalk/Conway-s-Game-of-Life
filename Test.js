@@ -352,11 +352,12 @@ function DrawSquare(Cell,on){
                noStroke();
                rect(r,q,size,size);
                break;
-              case 'Text':
+              case 'Text';
                text(Script[i],r,q,size,size);
                break;
                case 'Num':
                 noStroke();
+                textSize(20);
                 text(int(random(0,9)),r,q,size,size);
                 break;
              }
