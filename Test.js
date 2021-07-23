@@ -139,7 +139,7 @@ function refresh(){
 
   play=1;
 
-  neighbours(f);
+  f=neighbours(f);
     
     background(BGC);
 
@@ -346,7 +346,7 @@ function DrawSquare(Cell,on){
 
   function neighbours(boom){
     let state;
-    f = new Array(num);
+    let Tempf = new Array(num);
    
     for(let i = 0;i<numx;i++){
       for(let j = 0; j<numy;j++){
@@ -366,15 +366,15 @@ function DrawSquare(Cell,on){
     
     if(boom[j*numx+i]==1){
         if(state<2||state>3){
-          f[j*numx+i] = 0;
+          Tempf[j*numx+i] = 0;
            }
           else{
-            f[j*numx+i] = 1;
+            Tempf[j*numx+i] = 1;
           }
         }
     else if(boom[j*numx+i]==0){
       if(state==3){
-        f[j*numx+i]=1;
+        Tempf[j*numx+i]=1;
         xy[j*numx+i][2]=xy[j*numx+i][2]+(percentchange*(EndR-xy[j*numx+i][2]));
         xy[j*numx+i][3]=xy[j*numx+i][3]+(percentchange*(EndG-xy[j*numx+i][3]));
         xy[j*numx+i][4]=xy[j*numx+i][4]+(percentchange*(EndB-xy[j*numx+i][4]));
@@ -383,11 +383,11 @@ function DrawSquare(Cell,on){
         Color[j*numx+i][4]=Color[j*numx+i][4]+(percentchange*(EndB-Color[j*numx+i][4]));
       }
       else{
-        f[j*numx+i]=0;
+        Tempf[j*numx+i]=0;
       }
     }
     
       }
   }
-  return f;
+  return Tempf;
       }
