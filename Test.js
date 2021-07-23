@@ -40,6 +40,7 @@ let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
 
 let heatmap;
 
+var Shape = ['Circle', 'Square', 'Triangle', 'Lines'];
 var StartColor='#000000';
 var EndColor='#ffffff';
 var PercentShift=0.1;
@@ -76,7 +77,7 @@ function setup(){
     createCanvas(windowWidth,windowHeight);
  if(hoho==true){
   gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('PercentShift', 'Size', 'Distance', 'speed', 'Pen', 'BiggerPen', 'StartColor', 'EndColor','BackgroundColor');
+  gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'Shape', 'BackgroundColor');
   hoho=false;
  }
  noStroke();
@@ -316,7 +317,14 @@ function DrawSquare(Cell,on){
           q=xy[i][1];
           fill(Cell[i][2],Cell[i][3],Cell[i][4]);
             if(on[i]==1){
-            ellipse(r,q,size,size);
+             switch(Shape){
+              case 'Circle':
+                ellipse(r,q,size,size);
+                break;
+              case 'Triangle':
+               triangle(r-size/2,q+size/2,r+size/2,q+size/2,r,q-size/2);
+               break;
+             }
             }
             
         }
