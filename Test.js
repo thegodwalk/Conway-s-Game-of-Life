@@ -38,6 +38,10 @@ let Array2D = (r,c) => [...Array(r)].map(x=>Array(c).fill(0));
 let heatmap;
 let PreScript;
 let Script;
+let StateName = 'Play';
+let Settings = false;
+
+
 
 var Shape = ['Square', 'Circle', 'Triangle', 'Text','Num'];
 var StartColor='#ff0000';
@@ -71,7 +75,6 @@ var speedMax=1000;
 var speedStep=25;
 
 
-
 var gui;
 //Loading text file;
 function preload(){
@@ -80,21 +83,17 @@ function preload(){
  
 function setup(){
   
-    createCanvas(windowWidth,windowHeight);
- //Creates Gui and parses array of text, runs only once per site load;
- if(hoho==true){
-  gui = createGui('Life?Naaaaaah');
-  gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'LineColor', 'Shape', 'Lines', 'LineSameasShape');
-  Script = split(PreScript[0], ' ');
-  hoho=false;
- }
-    dis=Distance;
+  createCanvas(windowWidth,windowHeight); 
+  h = windowHeight;
+  w = windowWidth;
+  print(w);
+  dis=Distance;
+    
   size=Size;
   percentchange=PercentShift;
   BGC=BackgroundColor;
     background(BackgroundColor);
-h = windowHeight;
-w = windowWidth;
+
 sep = size+dis;
 numy = floor(h/sep);
 numx = floor(w/sep);
@@ -132,7 +131,62 @@ for(let i = 0;i<num;i++){
 play=0;
   www=0;
   heatmap=0;
+  
 
+
+ //Creates Gui and parses array of text, runs only once per site load;
+ if(hoho==true){
+
+     Playbutton = createButton('Play',StateName);
+  let buttonsize = Playbutton.size();
+  Playbutton.position(0,buttonsize.height);
+  Playbutton.mousePressed(ToggleIterations);
+  gui = createGui(this,'Life?Naaaaaah', 'QuickSettings', 0, 7*buttonsize.height);
+  gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'LineColor', 'Shape', 'Lines', 'LineSameasShape');
+  gui.hide();
+  Script = split(PreScript[0], ' ');
+
+  button = createButton('Reset');
+  button.position(0,3*buttonsize.height);
+  button.mousePressed(function(){
+    if(play==0){
+      setup();
+    }
+    if(play==1){    
+      background(BGC);
+      for(let i = 0;i<num;i++){
+        xy[i][2]=StartR;
+        xy[i][3]=StartG;
+        xy[i][4]=StartB;
+      }
+     f= new Array(num);
+      f=store;
+      Color=Array2D(num,5);
+      DrawShape(xy,f);
+      play=0; 
+    }
+  })
+  button1 = createButton('Settings');
+  button1.position(0,5*buttonsize.height);
+  print(Playbutton);
+  button1.mousePressed(function(){
+    if(Settings==true){
+    gui.hide();
+    setTimeout(loop,500);
+    Settings=false;
+    }
+    else if(Settings==false){
+      gui.show();
+      noLoop();
+      Settings=true;
+    }
+  });
+
+  hoho=false;
+ }
+    
+
+print(w);
 
 }
 //Calls to neighbours logic function every speed ms and draws resultant array;
@@ -154,28 +208,29 @@ function windowResized() {
 }
 
 function draw(){
-  
+if(Settings==false){  
 if(mouseIsPressed==true){
   if(BiggerPen==false){
-    if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
+    if((sepx-size/2)<mouseX && mouseX<(w-(sepx-0.75*dis)) && sepy<mouseY && mouseY<(h-sepy)){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
     b =round((mouseY-(sepy+0.75*dis)*scay)/sep);
       r = ((b)*numx)+(g);
-    f[r]=Pen;``
+    f[r]=Pen;
     if(play==0){
     store[r]=Pen;
+    print(mouseX);
     }
     }
   }
    else if(BiggerPen==true){
   
-  if(0<mouseX && mouseX<w && 0<mouseY && mouseY<h){
+  if(0<mouseX && mouseX<(w-sepx) && 0<mouseY && mouseY<h){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
     b =round((mouseY-(sepy+0.75*dis)*scay)/sep);
              for(let re = -1; b+re>=0 && b+re<numy && -1<=re && re<=1;re++){
            for(let pe = -1; g+pe>=0 && g+pe<numx && -1<=pe && pe<=1;pe++){
     r = ((b+pe)*numx)+(g+re);
-    f[r]=Pen;``
+    f[r]=Pen;
     if(play==0){
     store[r]=Pen;
     }
@@ -183,10 +238,14 @@ if(mouseIsPressed==true){
              }
   }
    }
-                         createCanvas(windowWidth,windowHeight);
     background(BGC);
     DrawShape(xy,f);
   }  
+}
+else if(Settings==true && play==0){
+  background(BGC);
+  DrawShape(xy,f);
+}
 }
 
     
@@ -209,14 +268,9 @@ function keyPressed(){
   }
 //Start iterations;
   if(key == ' '){
+    ToggleIterations();
     
-    if(www==0){
-      www=1;
-      setTimeout(refresh,speed);
-    }
-    else if(www==1){
-      www=0;
-    }
+
   }
 
     
@@ -236,7 +290,6 @@ function keyPressed(){
     setup();
   }
   if(play==1){    
-    createCanvas(windowWidth,windowHeight);
     background(BGC);
     for(let i = 0;i<num;i++){
       xy[i][2]=StartR;
@@ -262,8 +315,26 @@ function keyPressed(){
     DrawShape(xy,f);
 
 }
- //Toggle Heatmap;
+
   if(key=='w'){
+ToggleHeatmap();
+  }
+  }
+
+  function ToggleIterations(){
+  if(www==0){
+    www=1;
+    setTimeout(refresh,speed);
+    Playbutton.elt.innerHTML = 'Pause';
+
+  }
+  else if(www==1){
+    www=0;
+    Playbutton.elt.innerHTML = 'Play';
+  }
+}
+   //Toggle Heatmap;
+  function ToggleHeatmap(){
     let RefCol=Array2D(num,5);
     let ftemp=new Array(num).fill(1);
     if(heatmap==0){
@@ -275,11 +346,9 @@ function keyPressed(){
       ftemp=f;
       heatmap=0;
     }
-    createCanvas(windowWidth,windowHeight);
     background(BGC);
     
     DrawShape(RefCol,ftemp);
-  }
   }
  //Convert hex color value (from gui) to rgb;   
 function hexToRgb(hex) {
@@ -371,8 +440,7 @@ function DrawShape(Cell,on){
 
   function neighbours(boom){
     let state;
-    let Tempf = new Array(num);
-   
+    let Tempf = boom;
     for(let i = 0;i<numx;i++){
       for(let j = 0; j<numy;j++){
 
@@ -389,10 +457,10 @@ function DrawShape(Cell,on){
            
            }
          } 
+         if(state!=0){
+           print(state);
+         }
 //changing cell state based off # of live neighbours;
-    if(state!=0){
-     print(state);
-    }
     if(boom[j*numx+i]==1){
         if(state<2||state>3){
           Tempf[j*numx+i] = 0;
