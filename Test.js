@@ -386,15 +386,13 @@ function DrawShape(Cell,on){
    textSize(20);
   }
  if(Lines==true && heatmap==0){
+    stroke(LineColor);
     for(let i = 0; i<num;i++){
         if(on[i]==1){
            r=xy[i][0];
            q=xy[i][1];
            if(LineSameasShape==true){
             stroke(Cell[i][2],Cell[i][3],Cell[i][4]);
-           }
-           else{
-            stroke(LineColor);
            }
            line(r,q,w/2,h/2);
         }
