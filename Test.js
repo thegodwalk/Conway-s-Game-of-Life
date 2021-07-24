@@ -40,7 +40,7 @@ let PreScript;
 let Script;
 let StateName = 'Play';
 let Settings = false;
-
+let created = false;
 
 
 var Shape = ['Square', 'Circle', 'Triangle', 'Text','Num'];
@@ -82,8 +82,10 @@ function preload(){
 }
  
 function setup(){
-  
+  if (created==false){
   createCanvas(windowWidth,windowHeight); 
+  created=true;
+  }
   h = windowHeight;
   w = windowWidth;
   print(w);
@@ -152,7 +154,8 @@ play=0;
     if(play==0){
       setup();
     }
-    if(play==1){    
+    if(play==1){ 
+
       background(BGC);
       for(let i = 0;i<num;i++){
         xy[i][2]=StartR;
@@ -196,6 +199,7 @@ function refresh(){
   play=1;
 
   f=neighbours(f);
+
   background(BGC);
   DrawShape(xy,f); 
   if(www==1){
@@ -204,6 +208,7 @@ function refresh(){
   
 }
 function windowResized() {
+  createCanvas(windowWidth,windowHeight);
   setup();
 }
 
@@ -243,6 +248,7 @@ if(mouseIsPressed==true){
   }  
 }
 else if(Settings==true){
+
   background(BGC);
   DrawShape(xy,f);
 }
@@ -386,7 +392,7 @@ function DrawShape(Cell,on){
    textSize(20);
   }
  if(Lines==true && heatmap==0){
-    stroke(LineColor);
+  stroke(LineColor);
     for(let i = 0; i<num;i++){
         if(on[i]==1){
            r=xy[i][0];
@@ -394,9 +400,15 @@ function DrawShape(Cell,on){
            if(LineSameasShape==true){
             stroke(Cell[i][2],Cell[i][3],Cell[i][4]);
            }
+
            line(r,q,w/2,h/2);
         }
     }
+ }
+ if(Shape=='Num'){
+ push();
+ TextSize(size);
+ pop();
  }
  //drawing shape;
     for(let i = 0; i<num;i++){
@@ -445,19 +457,17 @@ function DrawShape(Cell,on){
         state=0;
        //Cycling through columns (i+re) and rows (j+pe), totalling the number of live neighbours (state);
          
-         for(let re = -1; i+re>=0 && i+re<numx && -1<=re && re<=1;re++){
-           for(let pe = -1; j+pe>=0 && j+pe<numy && -1<=pe && pe<=1;pe++){
+         for(let re = -1; i+re<numx && -1<=re && re<=1;re++){
+           for(let pe = -1; j+pe<numy && -1<=pe && pe<=1;pe++){
              
-           if(abs(re)+abs(pe)!=0){
+           if(abs(re)+abs(pe)!=0 && i+re>=0 && j+pe>=0){
            state=state+
            boom[((j+pe)*numx)+(i+re)];
            }
            
            }
          } 
-         if(state!=0){
-           print(state);
-         }
+
 //changing cell state based off # of live neighbours;
     if(boom[j*numx+i]==1){
         if(state<2||state>3){
