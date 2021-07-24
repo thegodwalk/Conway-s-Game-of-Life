@@ -247,8 +247,8 @@ if(mouseIsPressed==true){
   if(0<mouseX && mouseX<(w-sepx) && 0<mouseY && mouseY<h){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
     b =round((mouseY-(sepy+0.75*dis)*scay)/sep);
-             for(let re = -1; b+re>=0 && b+re<numy && -1<=re && re<=1;re++){
-           for(let pe = -1; g+pe>=0 && g+pe<numx && -1<=pe && pe<=1;pe++){
+             for(let re = -1; b+re>=0 && g+re<numx && -1<=re && re<=1;re++){
+           for(let pe = -1; g+pe>=0 && b+pe<numy && -1<=pe && pe<=1;pe++){
     r = ((b+pe)*numx)+(g+re);
     f[r]=Pen;
     if(play==0){
@@ -343,6 +343,7 @@ if(key == 'h'){
   button.elt.hidden=true;
   button1.elt.hidden=true;
   button2.elt.hidden=true;
+  gui.hide();
   hide=1;
   }
   else if(hide==1){
@@ -350,6 +351,9 @@ if(key == 'h'){
     button.elt.hidden=false;
     button1.elt.hidden=false;
     button2.elt.hidden=false;
+    if(Settings==true){
+      gui.show();
+    }
     hide=0;
   }
 }
@@ -422,9 +426,7 @@ function DrawShape(Cell,on){
  let r;
  let q;
 
-  if(Shape=='Num'){
-   textSize(20);
-  }
+
  if(Lines==true && heatmap==0){
   stroke(LineColor);
     for(let i = 0; i<num;i++){
@@ -440,9 +442,8 @@ function DrawShape(Cell,on){
     }
  }
  if(Shape=='Num'){
- push();
- TextSize(size);
- pop();
+ textSize(size);
+ 
  }
  //drawing shape;
     for(let i = 0; i<num;i++){
