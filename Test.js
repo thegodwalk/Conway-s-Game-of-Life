@@ -242,7 +242,7 @@ if(mouseIsPressed==true){
     DrawShape(xy,f);
   }  
 }
-else if(Settings==true && play==0){
+else if(Settings==true){
   background(BGC);
   DrawShape(xy,f);
 }
