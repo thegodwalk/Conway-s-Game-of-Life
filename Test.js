@@ -41,7 +41,11 @@ let Script;
 let StateName = 'Play';
 let Settings = false;
 let created = false;
-
+let Playbutton;
+let button;
+let button1;
+let button2;
+let hide = 0;
 
 var Shape = ['Square', 'Circle', 'Triangle', 'Text','Num'];
 var StartColor='#ff0000';
@@ -143,7 +147,7 @@ play=0;
   let buttonsize = Playbutton.size();
   Playbutton.position(0,buttonsize.height);
   Playbutton.mousePressed(ToggleIterations);
-  gui = createGui(this,'Life?Naaaaaah', 'QuickSettings', 0, 7*buttonsize.height);
+  gui = createGui(this,'Life?Naaaaaah', 'QuickSettings', 0, 9*buttonsize.height);
   gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'LineColor', 'Shape', 'Lines', 'LineSameasShape');
   gui.hide();
   Script = split(PreScript[0], ' ');
@@ -169,8 +173,18 @@ play=0;
       play=0; 
     }
   })
+  button2 = createButton('HeatMap');
+  button2.position(0,5*buttonsize.height);
+  button2.mousePressed(function(){
+    noLoop();
+    setTimeout(ToggleHeatmap,200);
+    
+  }
+    );
+
+
   button1 = createButton('Settings');
-  button1.position(0,5*buttonsize.height);
+  button1.position(0,7*buttonsize.height);
   print(Playbutton);
   button1.mousePressed(function(){
     if(Settings==true){
@@ -183,6 +197,7 @@ play=0;
       noLoop();
       Settings=true;
     }
+    
   });
 
   hoho=false;
@@ -321,6 +336,23 @@ function keyPressed(){
     DrawShape(xy,f);
 
 }
+if(key == 'h'){
+
+  if(hide == 0){
+  Playbutton.elt.hidden=true;
+  button.elt.hidden=true;
+  button1.elt.hidden=true;
+  button2.elt.hidden=true;
+  hide=1;
+  }
+  else if(hide==1){
+    Playbutton.elt.hidden=false;
+    button.elt.hidden=false;
+    button1.elt.hidden=false;
+    button2.elt.hidden=false;
+    hide=0;
+  }
+}
 
   if(key=='w'){
 ToggleHeatmap();
@@ -346,11 +378,13 @@ ToggleHeatmap();
     if(heatmap==0){
         RefCol=Color;
         heatmap=1;
+        
     }
-    else{
+    else if(heatmap==1){
       RefCol=xy;
       ftemp=f;
       heatmap=0;
+      loop();
     }
     background(BGC);
     
