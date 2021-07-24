@@ -440,7 +440,7 @@ function DrawShape(Cell,on){
 
   function neighbours(boom){
     let state;
-    let Tempf = boom;
+    let Tempf = new Array(num);
     for(let i = 0;i<numx;i++){
       for(let j = 0; j<numy;j++){
 
