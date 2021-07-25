@@ -177,8 +177,19 @@ play=0;
       }
       setup();
       
-      f=JSON.parse(localStorage.getItem("State"+String(SaveNum)));
-
+      let loadf=JSON.parse(localStorage.getItem("State"+String(SaveNum)));
+      let loadx = localStorage.getItem("numx"+String(SaveNum));
+      let loady = localStorage.getItem("numy"+String(SaveNum));
+      let diffx = round((numx-loadx)/2);
+      let diffy = round((numy-loady)/2);
+      for(let i = 0;i<loadx;i++){
+        for(let j = 0; j<loady;j++){
+          if(i+diffx>0 && i+diffx<numx && j+diffy>0 && j+diffy<numy){
+            f[(j+diffy)*numx+(i+diffx)]=loadf[j*loadx+i];
+          }
+        }
+      }
+print(f);
       DrawShape(xy,f);
       loop();
 
@@ -188,7 +199,11 @@ play=0;
       gui.Save(String(SaveNum));
     }
     let jsonf = JSON.stringify(f);
+    let jsonnumx = JSON.stringify(numx);
+    let jsonnumy = JSON.stringify(numy);
     localStorage.setItem("State"+String(SaveNum), jsonf);
+    localStorage.setItem("numx"+String(SaveNum), jsonnumx);
+    localStorage.setItem("numy"+String(SaveNum), jsonnumy);
 
   }, container);
   gui.setHeight(h-(10*buttonsize.height));
@@ -283,7 +298,7 @@ function refresh(){
   
 }
 function windowResized() {
-  gui.setHeight(h-(10*buttonsize.height));
+
   createCanvas(windowWidth,windowHeight);
   setup();
 }
