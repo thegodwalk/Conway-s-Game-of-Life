@@ -71,6 +71,7 @@
   };
 
 
+
   p5.prototype.removeGui = function(gui) {
     // TODO: implement this
   };
@@ -106,9 +107,28 @@
     // hard code the position, it can be changed later
     let x = xpos;
     let y = ypos;
+    this.Load = function(theboy){
+      qs._readFromLocalStorage(theboy);
+      return gui;
+     };
+     this.Save = function(theotherboy){
+
+       qs._saveInLocalStorage(theotherboy);    
+     };
 
 
     var qs = QuickSettings.create(x, y, label, parent);
+    this.setHeight = function(h){
+      qs.setHeight(h);
+    };
+    this.button = function(Name, fun, wow){
+      qs.addButton(Name, fun, wow);
+    };
+
+    this.CreateContainer = function() {
+      container = qs._createContainer();
+      return container;
+    };
 
     // proxy all functions of quicksettings
     this.prototype = qs;
@@ -236,6 +256,7 @@
     qs.bindGlobals = function(params) {
       this.bindParams(window, params);
     };
+
 
   }
 
