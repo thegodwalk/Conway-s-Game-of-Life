@@ -163,7 +163,7 @@ play=0;
 
   }
     );
-  gui = createGui(this,'Life?Naaaaaah', 'QuickSettings', 0, 9*buttonsize.height);
+  gui = createGui(this,'Life?Naaaaaah', 'QuickSettings', 0,6*buttonsize.height);
   gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'LineColor', 'Shape', 'Lines', 'LineSameasShape');
   SaveGui = createGui(this, 'Saves', 'QuickSettings', 100, 0);
   
@@ -185,7 +185,7 @@ play=0;
       for(let i = 0;i<loadx;i++){
         for(let j = 0; j<loady;j++){
           if(i+diffx>0 && i+diffx<numx && j+diffy>0 && j+diffy<numy){
-            f[(j+diffy)*numx+(i+diffx)]=loadf[j*loadx+i];
+            f[((j+diffy)*numx+(i+diffx))]=loadf[j*loadx+i];
           }
         }
       }
