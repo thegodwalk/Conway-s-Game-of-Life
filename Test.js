@@ -47,6 +47,10 @@ let button1;
 let button2;
 let hide = 0;
 
+let cnv;
+let CanvasPressed;
+let SaveSettings = false;
+
 var Shape = ['Square', 'Circle', 'Triangle', 'Text','Num'];
 var StartColor='#ff0000';
 var EndColor='#0000ff';
@@ -60,6 +64,8 @@ var Distance = 2;
 var BackgroundColor = '#000000';
 var Lines = false;
 var LineSameasShape = true;
+var SaveNum = [1,2,3,4,5,6,7,8,9,10];
+var IncludeSettings = true;
 
 
 var SizeMax = 100;
@@ -77,7 +83,7 @@ var PercentShiftStep=0.001;
 var speedMin=0;
 var speedMax=1000;
 var speedStep=25;
-
+let buttonsize;
 
 var gui;
 //Loading text file;
@@ -87,12 +93,17 @@ function preload(){
  
 function setup(){
   if (created==false){
-  createCanvas(windowWidth,windowHeight); 
+  cnv = createCanvas(windowWidth,windowHeight); 
+  cnv.elt.addEventListener("mousedown", function(){
+    CanvasPressed = true;
+  });
+  cnv.elt.addEventListener("mouseup", function(){
+    CanvasPressed = false;
+  });
   created=true;
   }
   h = windowHeight;
   w = windowWidth;
-  print(w);
   dis=Distance;
     
   size=Size;
@@ -144,16 +155,48 @@ play=0;
  if(hoho==true){
 
      Playbutton = createButton('Play',StateName);
-  let buttonsize = Playbutton.size();
-  Playbutton.position(0,buttonsize.height);
-  Playbutton.mousePressed(ToggleIterations);
+  buttonsize = Playbutton.size();
+  Playbutton.position(0,0);
+  Playbutton.mousePressed(function(){
+    heatmap=0;
+    ToggleIterations();
+
+  }
+    );
   gui = createGui(this,'Life?Naaaaaah', 'QuickSettings', 0, 9*buttonsize.height);
   gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'LineColor', 'Shape', 'Lines', 'LineSameasShape');
-  gui.hide();
-  Script = split(PreScript[0], ' ');
+  SaveGui = createGui(this, 'Saves', 'QuickSettings', 100, 0);
+  
+  SaveGui.addGlobals('SaveNum', 'IncludeSettings')
+  var container = SaveGui.CreateContainer();
+  SaveGui.button('Load', function(){
+    if(IncludeSettings==true){
 
+      gui = gui.Load(String(SaveNum));
+ 
+      }
+      setup();
+      
+      f=JSON.parse(localStorage.getItem("State"+String(SaveNum)));
+
+      DrawShape(xy,f);
+      loop();
+
+  }, container);
+  SaveGui.button('Save' , function(){
+    if(IncludeSettings==true){
+      gui.Save(String(SaveNum));
+    }
+    let jsonf = JSON.stringify(f);
+    localStorage.setItem("State"+String(SaveNum), jsonf);
+
+  }, container);
+  gui.setHeight(h-(10*buttonsize.height));
+  gui.hide();
+  SaveGui.hide();
+  Script = split(PreScript[0], ' ');
   button = createButton('Reset');
-  button.position(0,3*buttonsize.height);
+  button.position(0,buttonsize.height);
   button.mousePressed(function(){
     if(play==0){
       setup();
@@ -173,39 +216,52 @@ play=0;
       play=0; 
     }
   })
+
   button2 = createButton('HeatMap');
-  button2.position(0,5*buttonsize.height);
+  button2.position(0,2*buttonsize.height);
   button2.mousePressed(function(){
     noLoop();
-   ToggleIterations();
-    setTimeout(ToggleHeatmap,200);
+    www=0;
+    Playbutton.elt.innerHTML = 'Play';
+    setTimeout(ToggleHeatmap, speed+10);
     
   }
     );
 
 
   button1 = createButton('Settings');
-  button1.position(0,7*buttonsize.height);
-  print(Playbutton);
+  button1.position(0,3*buttonsize.height);
   button1.mousePressed(function(){
     if(Settings==true){
     gui.hide();
-    setTimeout(loop,500);
     Settings=false;
     }
     else if(Settings==false){
       gui.show();
-      noLoop();
       Settings=true;
     }
     
   });
+  button3 = createButton('Saves');
+  button3.position(0,4*buttonsize.height);
+  button3.mousePressed(function(){
+    if(SaveSettings==true){
+    SaveGui.hide();
+    SaveSettings=false;
+    }
+    else if(SaveSettings==false){
+      SaveGui.show();
+      SaveSettings=true;
+    }
+    
+  });
+
 
   hoho=false;
  }
     
 
-print(w);
+
 
 }
 //Calls to neighbours logic function every speed ms and draws resultant array;
@@ -213,24 +269,28 @@ function refresh(){
 
 
   play=1;
+  background(BGC);
+  DrawShape(xy,f); 
+
+
 
   f=neighbours(f);
 
-  background(BGC);
-  DrawShape(xy,f); 
+
   if(www==1){
  setTimeout(refresh,speed);
   }
   
 }
 function windowResized() {
+  gui.setHeight(h-(10*buttonsize.height));
   createCanvas(windowWidth,windowHeight);
   setup();
 }
 
 function draw(){
-if(Settings==false){  
-if(mouseIsPressed==true){
+
+if(CanvasPressed==true){
   if(BiggerPen==false){
     if((sepx-size/2)<mouseX && mouseX<(w-(sepx-0.75*dis)) && sepy<mouseY && mouseY<(h-sepy)){
     g =round((mouseX-(sepx+0.75*dis)*scax)/sep);
@@ -239,7 +299,7 @@ if(mouseIsPressed==true){
     f[r]=Pen;
     if(play==0){
     store[r]=Pen;
-    print(mouseX);
+
     }
     }
   }
@@ -259,17 +319,13 @@ if(mouseIsPressed==true){
              }
   }
    }
-    background(BGC);
-    DrawShape(xy,f);
-  }  
-}
-else if(Settings==true){
-
-  background(BGC);
+   if(www==0){
+   background(BGC);
   DrawShape(xy,f);
-}
-}
+   }
+  }  
 
+}
     
 function keyPressed(){
   if(key == 's'){
@@ -290,6 +346,8 @@ function keyPressed(){
   }
 //Start iterations;
   if(key == ' '){
+    loop();
+    heatmap=0;
     ToggleIterations();
     
 
@@ -344,7 +402,10 @@ if(key == 'h'){
   button.elt.hidden=true;
   button1.elt.hidden=true;
   button2.elt.hidden=true;
+  button3.elt.hidden=true;
   gui.hide();
+  SaveGui.hide();
+  loop();
   hide=1;
   }
   else if(hide==1){
@@ -352,15 +413,22 @@ if(key == 'h'){
     button.elt.hidden=false;
     button1.elt.hidden=false;
     button2.elt.hidden=false;
+    button3.elt.hidden=false;
     if(Settings==true){
       gui.show();
+    }
+    if(SaveSettings==true){
+      SaveGui.show();
     }
     hide=0;
   }
 }
 
   if(key=='w'){
-ToggleHeatmap();
+    noLoop();
+    www=0;
+    Playbutton.elt.innerHTML = 'Play';
+    setTimeout(ToggleHeatmap, speed+10);
   }
   }
 
@@ -378,11 +446,15 @@ ToggleHeatmap();
 }
    //Toggle Heatmap;
   function ToggleHeatmap(){
+    noLoop();
+    if(play==1){
     let RefCol=Array2D(num,5);
     let ftemp=new Array(num).fill(1);
     if(heatmap==0){
         RefCol=Color;
         heatmap=1;
+
+
         
     }
     else if(heatmap==1){
@@ -392,9 +464,9 @@ ToggleHeatmap();
       loop();
     }
     background(BGC);
-    
     DrawShape(RefCol,ftemp);
   }
+}
  //Convert hex color value (from gui) to rgb;   
 function hexToRgb(hex) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
