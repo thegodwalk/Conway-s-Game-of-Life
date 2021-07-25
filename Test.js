@@ -361,7 +361,6 @@ function keyPressed(){
   }
 //Start iterations;
   if(key == ' '){
-    loop();
     heatmap=0;
     ToggleIterations();
     
