@@ -177,6 +177,7 @@ play=0;
   button2.position(0,5*buttonsize.height);
   button2.mousePressed(function(){
     noLoop();
+   ToggleIterations();
     setTimeout(ToggleHeatmap,200);
     
   }
