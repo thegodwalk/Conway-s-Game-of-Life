@@ -334,12 +334,12 @@ if(CanvasPressed==true){
              }
   }
    }
+
+  }  
    if(www==0){
    background(BGC);
   DrawShape(xy,f);
    }
-  }  
-
 }
     
 function keyPressed(){
