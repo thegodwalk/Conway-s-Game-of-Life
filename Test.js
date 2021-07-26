@@ -512,11 +512,12 @@ if(key == 'h'){
 }
    //Toggle Heatmap;
   function ToggleHeatmap(){
-    noLoop();
+
     if(play==1){
     let RefCol=Array2D(num,5);
     let ftemp=new Array(num).fill(1);
     if(heatmap==0){
+      noLoop();
         RefCol=Color;
         heatmap=1;
 
@@ -524,10 +525,11 @@ if(key == 'h'){
         
     }
     else if(heatmap==1){
+      loop();
       RefCol=xy;
       ftemp=f;
       heatmap=0;
-      loop();
+
       if(PlaystateHeatmap==1){
         www=1;
         setTimeout(refresh,speed);
