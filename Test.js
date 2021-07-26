@@ -150,19 +150,7 @@ PanelSetup();
   gui = createGui(this,'Life?Naaaaaah', 'QuickSettings', 0,6*buttonsize.height);
   gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'LineColor', 'Shape', 'Lines', 'LineSameasShape');
   SaveGui = createGui(this, 'Saves', 'QuickSettings', 100, 0);
-  gui.setGlobalChangeHandler(function(){
-   if(shouldignore == true){
-     return;
-   }
-   shouldignore=true;
-   setTimeout(() => {
-    shouldignore = false;
-}, 50);
-    PanelSetup();
-    background(BGC);
-    DrawShape(xy,f);
-
-  });
+  
   SaveGui.addGlobals('SaveNum', 'IncludeSettings')
   var container = SaveGui.CreateContainer();
   SaveGui.button('Load', function(){
@@ -297,7 +285,19 @@ PanelSetup();
 
   hoho=false;
  }
-    
+    gui.setGlobalChangeHandler(function(){
+   if(shouldignore == true){
+     return;
+   }
+   shouldignore=true;
+   setTimeout(() => {
+    shouldignore = false;
+}, 50);
+    PanelSetup();
+    background(BGC);
+    DrawShape(xy,f);
+
+  });
 
 
 
