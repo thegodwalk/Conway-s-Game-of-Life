@@ -185,7 +185,20 @@ PanelSetup();
           }
         }
       }
-print(f);
+      gui.setGlobalChangeHandler(function(){
+        if(shouldignore == true){
+          return;
+        }
+        shouldignore=true;
+        setTimeout(() => {
+         shouldignore = false;
+     }, 50);
+         PanelSetup();
+         background(BGC);
+         DrawShape(xy,f);
+     
+       });
+
       DrawShape(xy,f);
       loop();
 
@@ -200,6 +213,19 @@ print(f);
     localStorage.setItem("State"+String(SaveNum), jsonf);
     localStorage.setItem("numx"+String(SaveNum), jsonnumx);
     localStorage.setItem("numy"+String(SaveNum), jsonnumy);
+    gui.setGlobalChangeHandler(function(){
+      if(shouldignore == true){
+        return;
+      }
+      shouldignore=true;
+      setTimeout(() => {
+       shouldignore = false;
+   }, 50);
+       PanelSetup();
+       background(BGC);
+       DrawShape(xy,f);
+   
+     });
 
   }, container);
   gui.setHeight(h-(10*buttonsize.height));
