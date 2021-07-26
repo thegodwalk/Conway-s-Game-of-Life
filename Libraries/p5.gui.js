@@ -115,6 +115,9 @@
 
        qs._saveInLocalStorage(theotherboy);    
      };
+     this.setGlobalChangeHandler = function(fun){
+       qs.setGlobalChangeHandler(fun);
+     }
 
 
     var qs = QuickSettings.create(x, y, label, parent);
