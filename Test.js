@@ -129,7 +129,7 @@ play=0;
   www=0;
   heatmap=0;
 
-  
+  PanelSetup();
 
   
 
