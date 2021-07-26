@@ -280,7 +280,7 @@ PanelSetup();
     }
     
   });
-
+shouldignore=false;
 
   hoho=false;
  }
