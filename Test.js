@@ -66,7 +66,8 @@ var Lines = false;
 var LineSameasShape = true;
 var SaveNum = [1,2,3,4,5,6,7,8,9,10];
 var IncludeSettings = true;
-let SaveName = 'EnterNameHere';
+
+
 var SizeMax = 100;
 var SizeMin = 1;
 var SizeStep = 0.1;
@@ -128,7 +129,6 @@ play=0;
   www=0;
   heatmap=0;
 
-
   
 
   
@@ -149,8 +149,7 @@ play=0;
   gui = createGui(this,'Life?Naaaaaah', 'QuickSettings', 0,6*buttonsize.height);
   gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'LineColor', 'Shape', 'Lines', 'LineSameasShape');
   SaveGui = createGui(this, 'Saves', 'QuickSettings', 100, 0);
-  let wowee = SaveGui.addTextField('SaveName', SaveName,addName)
-  wowee.bindDropDown
+  
   SaveGui.addGlobals('SaveNum', 'IncludeSettings')
   var container = SaveGui.CreateContainer();
   SaveGui.button('Load', function(){
@@ -256,11 +255,10 @@ play=0;
     }
     
   });
-
+shouldignore=false;
 
   hoho=false;
  }
-
     gui.setGlobalChangeHandler(function(){
    if(shouldignore == true){
      return;
@@ -296,9 +294,6 @@ function refresh(){
   }
   
 }
-function addName(Name){
-  print(Name);
-}
 function PanelSetup(){
   if(www==0){
     if(play==0){
@@ -311,7 +306,7 @@ function PanelSetup(){
     BGR=hexToRgb(BackgroundColor).r;
     BGG=hexToRgb(BackgroundColor).g;
     BGB=hexToRgb(BackgroundColor).b;
-
+    BGC=[BGR,BGG,BGB];
     
 
 }
