@@ -46,7 +46,7 @@ let button;
 let button1;
 let button2;
 let hide = 0;
-
+let PlaystateHeatmap;
 let cnv;
 let CanvasPressed;
 let SaveSettings = false;
@@ -125,29 +125,13 @@ scay=(h-(sepy+dis))/h;
 boom = new Array(num);
 Color=Array2D(num,5);
 xy = getcoords();
-  StartR=hexToRgb(StartColor).r;
-  StartG=hexToRgb(StartColor).g;
-  StartB=hexToRgb(StartColor).b;
-  EndR=hexToRgb(EndColor).r;
-  EndG=hexToRgb(EndColor).g;
-  EndB=hexToRgb(EndColor).b;
-  BGR=hexToRgb(BackgroundColor).r;
-  BGG=hexToRgb(BackgroundColor).g;
-  BGB=hexToRgb(BackgroundColor).b;
-  
-for(let i = 0;i<num;i++){
-  xy[i][2]=StartR;
-  xy[i][3]=StartG;
-  xy[i][4]=StartB;
-  Color[i][2]=BGR;
-  Color[i][3]=BGG;
-  Color[i][4]=BGB;
-}
-
-  
 play=0;
   www=0;
   heatmap=0;
+PanelSetup();
+
+  
+
   
 
 
@@ -166,7 +150,11 @@ play=0;
   gui = createGui(this,'Life?Naaaaaah', 'QuickSettings', 0,6*buttonsize.height);
   gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'LineColor', 'Shape', 'Lines', 'LineSameasShape');
   SaveGui = createGui(this, 'Saves', 'QuickSettings', 100, 0);
-  
+  gui.setGlobalChangeHandler(function(){
+    PanelSetup();
+    background(BGC);
+    DrawShape(xy,f);
+  });
   SaveGui.addGlobals('SaveNum', 'IncludeSettings')
   var container = SaveGui.CreateContainer();
   SaveGui.button('Load', function(){
@@ -236,6 +224,7 @@ print(f);
   button2.position(0,2*buttonsize.height);
   button2.mousePressed(function(){
     noLoop();
+    PlaystateHeatmap = www;
     www=0;
     Playbutton.elt.innerHTML = 'Play';
     setTimeout(ToggleHeatmap, speed+10);
@@ -297,6 +286,31 @@ function refresh(){
   }
   
 }
+function PanelSetup(){
+  if(www==0){
+    if(play==0){
+    StartR=hexToRgb(StartColor).r;
+    StartG=hexToRgb(StartColor).g;
+    StartB=hexToRgb(StartColor).b;
+    EndR=hexToRgb(EndColor).r;
+    EndG=hexToRgb(EndColor).g;
+    EndB=hexToRgb(EndColor).b;
+    BGR=hexToRgb(BackgroundColor).r;
+    BGG=hexToRgb(BackgroundColor).g;
+    BGB=hexToRgb(BackgroundColor).b;
+    BGC=[BGR,BGG,BGB];
+    
+  for(let i = 0;i<num;i++){
+    xy[i][2]=StartR;
+    xy[i][3]=StartG;
+    xy[i][4]=StartB;
+    Color[i][2]=BGR;
+    Color[i][3]=BGG;
+    Color[i][4]=BGB;
+  }
+}
+}
+}
 function windowResized() {
 
   createCanvas(windowWidth,windowHeight);
@@ -336,34 +350,14 @@ if(CanvasPressed==true){
    }
 
    
-  }  
   if(www==0){
-    if(play==0){
-    StartR=hexToRgb(StartColor).r;
-    StartG=hexToRgb(StartColor).g;
-    StartB=hexToRgb(StartColor).b;
-    EndR=hexToRgb(EndColor).r;
-    EndG=hexToRgb(EndColor).g;
-    EndB=hexToRgb(EndColor).b;
-    BGR=hexToRgb(BackgroundColor).r;
-    BGG=hexToRgb(BackgroundColor).g;
-    BGB=hexToRgb(BackgroundColor).b;
-    BGC=[BGR,BGG,BGB];
-    
-  for(let i = 0;i<num;i++){
-    xy[i][2]=StartR;
-    xy[i][3]=StartG;
-    xy[i][4]=StartB;
-    Color[i][2]=BGR;
-    Color[i][3]=BGG;
-    Color[i][4]=BGB;
-  }
+    background(BGC);
+   DrawShape(xy,f);
+      }
+  }  
+
 }
-     
-   background(BGR,BGG,BGB);
-  DrawShape(xy,f);
-}
-}
+
     
 function keyPressed(){
   if(key == 's'){
@@ -499,6 +493,10 @@ if(key == 'h'){
       ftemp=f;
       heatmap=0;
       loop();
+      if(PlaystateHeatmap==1){
+        www=1;
+        setTimeout(refresh,speed);
+      };
     }
     background(BGC);
     DrawShape(RefCol,ftemp);
