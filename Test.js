@@ -50,7 +50,7 @@ let PlaystateHeatmap;
 let cnv;
 let CanvasPressed;
 let SaveSettings = false;
-
+let shouldignore;
 var Shape = ['Square', 'Circle', 'Triangle', 'Text','Num'];
 var StartColor='#ff0000';
 var EndColor='#0000ff';
@@ -151,9 +151,17 @@ PanelSetup();
   gui.addGlobals('Size', 'Distance', 'speed', 'PercentShift', 'Pen', 'BiggerPen', 'StartColor', 'EndColor', 'BackgroundColor', 'LineColor', 'Shape', 'Lines', 'LineSameasShape');
   SaveGui = createGui(this, 'Saves', 'QuickSettings', 100, 0);
   gui.setGlobalChangeHandler(function(){
+   if(shouldignore == true){
+     return;
+   }
+   shouldignore=true;
+   setTimeout(() => {
+    shouldignore = false;
+}, 50);
     PanelSetup();
     background(BGC);
     DrawShape(xy,f);
+
   });
   SaveGui.addGlobals('SaveNum', 'IncludeSettings')
   var container = SaveGui.CreateContainer();
@@ -300,14 +308,7 @@ function PanelSetup(){
     BGB=hexToRgb(BackgroundColor).b;
     BGC=[BGR,BGG,BGB];
     
-  for(let i = 0;i<num;i++){
-    xy[i][2]=StartR;
-    xy[i][3]=StartG;
-    xy[i][4]=StartB;
-    Color[i][2]=BGR;
-    Color[i][3]=BGG;
-    Color[i][4]=BGB;
-  }
+
 }
 }
 }
@@ -465,6 +466,16 @@ if(key == 'h'){
 
   function ToggleIterations(){
   if(www==0){
+    if(play==0){
+      for(let i = 0;i<num;i++){
+        xy[i][2]=StartR;
+        xy[i][3]=StartG;
+        xy[i][4]=StartB;
+        Color[i][2]=BGR;
+        Color[i][3]=BGG;
+        Color[i][4]=BGB;
+      }
+    }
     www=1;
     setTimeout(refresh,speed);
     Playbutton.elt.innerHTML = 'Pause';
@@ -542,8 +553,13 @@ function DrawShape(Cell,on){
            r=xy[i][0];
            q=xy[i][1];
            if(LineSameasShape==true){
-            stroke(Cell[i][2],Cell[i][3],Cell[i][4]);
-           }
+            if(play==1){
+              stroke(Cell[i][2],Cell[i][3],Cell[i][4]);
+          }
+          else if(play==0){
+            stroke(StartR,StartG,StartB);
+          }
+        }
 
            line(r,q,w/2,h/2);
         }
@@ -555,7 +571,12 @@ function DrawShape(Cell,on){
  }
  //drawing shape;
     for(let i = 0; i<num;i++){
+      if(play==1){
           fill(Cell[i][2],Cell[i][3],Cell[i][4]);
+      }
+      else if(play==0){
+        fill(StartR,StartG,StartB);
+      }
              if(on[i]==1){
               r=xy[i][0];
               q=xy[i][1];              
