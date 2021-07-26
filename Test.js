@@ -501,6 +501,7 @@ if(key == 'h'){
       }
     }
     www=1;
+    loop();
     setTimeout(refresh,speed);
     Playbutton.elt.innerHTML = 'Pause';
 
