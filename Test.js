@@ -255,10 +255,11 @@ play=0;
     }
     
   });
-shouldignore=false;
+
 
   hoho=false;
  }
+ shouldignore=false;
     gui.setGlobalChangeHandler(function(){
    if(shouldignore == true){
      return;
