@@ -335,11 +335,31 @@ if(CanvasPressed==true){
   }
    }
 
+   
   }  
-   if(www==0){
-   background(BGC);
+  if(www==0){
+    StartR=hexToRgb(StartColor).r;
+    StartG=hexToRgb(StartColor).g;
+    StartB=hexToRgb(StartColor).b;
+    EndR=hexToRgb(EndColor).r;
+    EndG=hexToRgb(EndColor).g;
+    EndB=hexToRgb(EndColor).b;
+    BGR=hexToRgb(BackgroundColor).r;
+    BGG=hexToRgb(BackgroundColor).g;
+    BGB=hexToRgb(BackgroundColor).b;
+    
+  for(let i = 0;i<num;i++){
+    xy[i][2]=StartR;
+    xy[i][3]=StartG;
+    xy[i][4]=StartB;
+    Color[i][2]=BGR;
+    Color[i][3]=BGG;
+    Color[i][4]=BGB;
+  }
+     
+   background(BGR,BGG,BGB);
   DrawShape(xy,f);
-   }
+}
 }
     
 function keyPressed(){
