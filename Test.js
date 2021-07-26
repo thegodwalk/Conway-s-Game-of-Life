@@ -245,7 +245,6 @@ PanelSetup();
   button2 = createButton('HeatMap');
   button2.position(0,2*buttonsize.height);
   button2.mousePressed(function(){
-    noLoop();
     PlaystateHeatmap = www;
     www=0;
     Playbutton.elt.innerHTML = 'Play';
@@ -483,7 +482,6 @@ if(key == 'h'){
 }
 
   if(key=='w'){
-    noLoop();
     www=0;
     Playbutton.elt.innerHTML = 'Play';
     setTimeout(ToggleHeatmap, speed+10);
