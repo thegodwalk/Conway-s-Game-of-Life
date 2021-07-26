@@ -338,6 +338,7 @@ if(CanvasPressed==true){
    
   }  
   if(www==0){
+    if(play==0){
     StartR=hexToRgb(StartColor).r;
     StartG=hexToRgb(StartColor).g;
     StartB=hexToRgb(StartColor).b;
@@ -347,6 +348,7 @@ if(CanvasPressed==true){
     BGR=hexToRgb(BackgroundColor).r;
     BGG=hexToRgb(BackgroundColor).g;
     BGB=hexToRgb(BackgroundColor).b;
+    BGC=[BGR,BGG,BGB];
     
   for(let i = 0;i<num;i++){
     xy[i][2]=StartR;
@@ -356,6 +358,7 @@ if(CanvasPressed==true){
     Color[i][3]=BGG;
     Color[i][4]=BGB;
   }
+}
      
    background(BGR,BGG,BGB);
   DrawShape(xy,f);
