@@ -226,7 +226,7 @@ PanelSetup();
     if(play==0){
       setup();
     }
-    if(play==1){ 
+    else if(play==1){ 
 
       background(BGC);
       for(let i = 0;i<num;i++){
