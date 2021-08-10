@@ -477,9 +477,10 @@ else if(key == 'h'){
       }
     }
     www=1;
-    loop();
+    
     setTimeout(refresh,speed);
     Playbutton.elt.innerHTML = 'Pause';
+    loop();
 
   }
   else if(www==1){
