@@ -430,7 +430,7 @@ function keyPressed(){
     }
 
 }
-    store=f;
+   
     DrawShape(xy,f);
 
 }
