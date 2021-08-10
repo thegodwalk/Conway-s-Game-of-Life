@@ -173,7 +173,7 @@ play=0;
         }
       }
 
-
+      store=f;
       DrawShape(xy,f);
       loop();
 
