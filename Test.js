@@ -93,6 +93,7 @@ function preload(){
  
 function setup(){
   if (created==false){
+   
   cnv = createCanvas(windowWidth,windowHeight); 
   cnv.elt.addEventListener("mousedown", function(){
     CanvasPressed = true;
@@ -116,7 +117,7 @@ numy = floor(h/sep);
 numx = floor(w/sep);
 num=numx*numy;
 f = new Array(num).fill(0);
-store = new Array(num).fill(0);
+
 
 sepx=((w-(numx*sep)));
 sepy=((h-(numy*sep)));
@@ -143,6 +144,7 @@ play=0;
   Playbutton.mousePressed(function(){
     heatmap=0;
     ToggleIterations();
+   store = new Array(num).fill(0);
 
   }
     );
@@ -199,6 +201,7 @@ play=0;
   button.position(0,buttonsize.height);
   button.mousePressed(function(){
     if(play==0){
+     store = new Array(num).fill(0);
       setup();
     }
     else if(play==1){ 
