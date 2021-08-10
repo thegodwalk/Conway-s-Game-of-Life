@@ -21,7 +21,7 @@ let h;
  let scay;
  let hoho=true;
 let boom;
-let store = new Array().fill(0);
+let store;
 let play;
 let www;
 let StartR;
@@ -93,7 +93,6 @@ function preload(){
  
 function setup(){
   if (created==false){
-   
   cnv = createCanvas(windowWidth,windowHeight); 
   cnv.elt.addEventListener("mousedown", function(){
     CanvasPressed = true;
@@ -117,7 +116,7 @@ numy = floor(h/sep);
 numx = floor(w/sep);
 num=numx*numy;
 f = new Array(num).fill(0);
-
+store = new Array(num).fill(0);
 
 sepx=((w-(numx*sep)));
 sepy=((h-(numy*sep)));
@@ -144,7 +143,6 @@ play=0;
   Playbutton.mousePressed(function(){
     heatmap=0;
     ToggleIterations();
-   
 
   }
     );
@@ -170,14 +168,12 @@ play=0;
       for(let i = 0;i<loadx;i++){
         for(let j = 0; j<loady;j++){
           if(i+diffx>0 && i+diffx<numx && j+diffy>0 && j+diffy<numy){
-            f[((j+diffy)*numx+(i+diffx))]=loadf[j*loadx+i];         
+            f[((j+diffy)*numx+(i+diffx))]=loadf[j*loadx+i];
           }
         }
       }
 
-      store = f;
-   www = 0;
-   play = 0;
+
       DrawShape(xy,f);
       loop();
 
@@ -203,7 +199,6 @@ play=0;
   button.position(0,buttonsize.height);
   button.mousePressed(function(){
     if(play==0){
-     store = new Array(num).fill(0);
       setup();
     }
     else if(play==1){ 
@@ -286,7 +281,7 @@ play=0;
 function refresh(){
 
 
-  
+  play=1;
   background(BGC);
   DrawShape(xy,f); 
 
@@ -294,7 +289,7 @@ function refresh(){
 
   f=neighbours(f);
 
-  play=1;
+
   if(www==1){
  setTimeout(refresh,speed);
   }
@@ -429,7 +424,7 @@ function keyPressed(){
     }
 
 }
-   store=f;
+    store=f;
     DrawShape(xy,f);
 
 }
@@ -471,7 +466,7 @@ if(key == 'h'){
 
   function ToggleIterations(){
   if(www==0){
-   if(play==0){
+    if(play==0){
       for(let i = 0;i<num;i++){
         xy[i][2]=StartR;
         xy[i][3]=StartG;
@@ -479,8 +474,8 @@ if(key == 'h'){
         Color[i][2]=BGR;
         Color[i][3]=BGG;
         Color[i][4]=BGB;
+      }
     }
-   }
     www=1;
     loop();
     setTimeout(refresh,speed);
@@ -491,7 +486,6 @@ if(key == 'h'){
     www=0;
     Playbutton.elt.innerHTML = 'Play';
   }
-   play=1;
 }
    //Toggle Heatmap;
   function ToggleHeatmap(){
