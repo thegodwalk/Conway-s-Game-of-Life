@@ -89,6 +89,7 @@ var gui;
 //Loading text file;
 function preload(){
  PreScript = loadStrings("Script.txt");
+ store = store.fill(0);
 }
  
 function setup(){
@@ -144,7 +145,7 @@ play=0;
   Playbutton.mousePressed(function(){
     heatmap=0;
     ToggleIterations();
-   store = new Array(num).fill(0);
+   
 
   }
     );
