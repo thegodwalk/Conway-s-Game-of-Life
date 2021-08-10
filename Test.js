@@ -379,7 +379,7 @@ function keyPressed(){
    }
   }
 //Start iterations;
-  if(key == ' '){
+  else if(key == ' '){
     heatmap=0;
     ToggleIterations();
     
@@ -388,17 +388,17 @@ function keyPressed(){
 
     
  //Speed+;
-  if(key == 'd'){
+  else if(key == 'd'){
     speed=abs(speed-50);
   }
  //Speed-;
-    if(key == 'a'){
+   else if(key == 'a'){
     speed=abs(speed+50);
   }
  //1st press- Return grid to pre iteration state;
  //2nd press- Refresh grid (resets all values);
  //Note - If any iterations are run between press 1 and 2, cycle is reset (refresh sets play=1);
-  if(key=='r'){
+  else if(key=='r'){
   if(play==0){
     setup();
   }
@@ -417,7 +417,7 @@ function keyPressed(){
   }
 }
  //Set random layout of live cells:
-  if(key=='e'){
+  else if(key=='e'){
       for(let i = 0;i<num;i++){
     if(f[i]==0){
     f[i]=round(random(0,1));
@@ -428,7 +428,7 @@ function keyPressed(){
     DrawShape(xy,f);
 
 }
-if(key == 'h'){
+else if(key == 'h'){
 
   if(hide == 0){
   Playbutton.elt.hidden=true;
@@ -457,12 +457,12 @@ if(key == 'h'){
   }
 }
 
-  if(key=='w'){
+ else if(key=='w'){
     www=0;
     Playbutton.elt.innerHTML = 'Play';
     setTimeout(ToggleHeatmap, speed+10);
   }
-  }
+  };
 
   function ToggleIterations(){
   if(www==0){
@@ -486,7 +486,7 @@ if(key == 'h'){
     www=0;
     Playbutton.elt.innerHTML = 'Play';
   }
-}
+};
    //Toggle Heatmap;
   function ToggleHeatmap(){
 
