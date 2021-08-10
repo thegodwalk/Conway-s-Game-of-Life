@@ -177,6 +177,8 @@ play=0;
       }
 
       store = f;
+   www = 0;
+   play = 0;
       DrawShape(xy,f);
       loop();
 
