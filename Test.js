@@ -405,6 +405,7 @@ function keyPressed(){
  //2nd press- Refresh grid (resets all values);
  //Note - If any iterations are run between press 1 and 2, cycle is reset (refresh sets play=1);
   if(key=='r'){
+   www=0;
   if(play==0){
     setup();
   }
@@ -430,7 +431,7 @@ function keyPressed(){
     }
 
 }
-   
+   store=f;
     DrawShape(xy,f);
 
 }
