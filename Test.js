@@ -159,7 +159,7 @@ play=0;
  
       }
       setup();
-      f = new Array(num);
+      f = new Array(num).fill(0);
       let loadf=JSON.parse(localStorage.getItem("State"+String(SaveNum)));
       let loadx = localStorage.getItem("numx"+String(SaveNum));
       let loady = localStorage.getItem("numy"+String(SaveNum));
