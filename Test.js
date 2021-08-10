@@ -21,7 +21,7 @@ let h;
  let scay;
  let hoho=true;
 let boom;
-let store;
+let store = new Array().fill(0);
 let play;
 let www;
 let StartR;
@@ -89,7 +89,6 @@ var gui;
 //Loading text file;
 function preload(){
  PreScript = loadStrings("Script.txt");
- store = new Array().fill(0);
 }
  
 function setup(){
