@@ -171,12 +171,12 @@ play=0;
       for(let i = 0;i<loadx;i++){
         for(let j = 0; j<loady;j++){
           if(i+diffx>0 && i+diffx<numx && j+diffy>0 && j+diffy<numy){
-            f[((j+diffy)*numx+(i+diffx))]=loadf[j*loadx+i];
+            f[((j+diffy)*numx+(i+diffx))]=loadf[j*loadx+i];         
           }
         }
       }
 
-
+      store = f;
       DrawShape(xy,f);
       loop();
 
