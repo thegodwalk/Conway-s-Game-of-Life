@@ -89,7 +89,7 @@ var gui;
 //Loading text file;
 function preload(){
  PreScript = loadStrings("Script.txt");
- store = store.fill(0);
+ store = new Array().fill(0);
 }
  
 function setup(){
