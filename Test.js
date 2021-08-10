@@ -472,6 +472,7 @@ if(key == 'h'){
 
   function ToggleIterations(){
   if(www==0){
+   if(play==0){
       for(let i = 0;i<num;i++){
         xy[i][2]=StartR;
         xy[i][3]=StartG;
@@ -480,6 +481,7 @@ if(key == 'h'){
         Color[i][3]=BGG;
         Color[i][4]=BGB;
     }
+   }
     www=1;
     loop();
     setTimeout(refresh,speed);
@@ -490,6 +492,7 @@ if(key == 'h'){
     www=0;
     Playbutton.elt.innerHTML = 'Play';
   }
+   play=1;
 }
    //Toggle Heatmap;
   function ToggleHeatmap(){
