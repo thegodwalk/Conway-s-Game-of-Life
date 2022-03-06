@@ -565,7 +565,7 @@ function DrawShape(Cell,on){
           }
         }
 
-           line(r,q,0,0);
+           line(r,q,w/2,h/2);
         }
     }
  }
